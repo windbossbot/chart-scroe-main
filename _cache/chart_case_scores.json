@@ -1,0 +1,4196 @@
+{
+  "generated_at": "2026-03-08T22:33:35.362894+09:00",
+  "cases": [
+    {
+      "ticker": "ADA-USD",
+      "name": "Cardano",
+      "market": "CRYPTO",
+      "date": "2020-05-10",
+      "classification": [
+        "상승 지속 중 흔들림",
+        "20선 지지권",
+        "재가속 준비"
+      ],
+      "buyable_score": 40.0,
+      "result_score": 86.2,
+      "extension_risk_score": 25.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 15,
+        "trend": 20,
+        "quality": 5,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 62.03,
+        "close20": 61.42,
+        "dd10": -4.59
+      },
+      "extension_details": {
+        "dist20": 1.64,
+        "dist60": 31.3,
+        "dist120": 7.8,
+        "rsi14": 53.74,
+        "ret14": 3.92
+      }
+    },
+    {
+      "ticker": "ADA-USD",
+      "name": "Cardano",
+      "market": "CRYPTO",
+      "date": "2020-09-24",
+      "classification": [
+        "급락 후 반등",
+        "과매도 회복",
+        "변동성 반전"
+      ],
+      "buyable_score": 10.0,
+      "result_score": 99.4,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 10,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 37.82,
+        "close20": 29.56,
+        "dd10": -0.2
+      },
+      "extension_details": {
+        "dist20": -8.86,
+        "dist60": -29.53,
+        "dist120": -22.96,
+        "rsi14": 32.27,
+        "ret14": -14.76
+      }
+    },
+    {
+      "ticker": "ADA-USD",
+      "name": "Cardano",
+      "market": "CRYPTO",
+      "date": "2020-12-23",
+      "classification": [
+        "변동성 조정",
+        "강세장 눌림",
+        "재상승 후보"
+      ],
+      "buyable_score": 40.0,
+      "result_score": 90.6,
+      "extension_risk_score": 3.7,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 25,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 159.06,
+        "close20": 110.42,
+        "dd10": -3.13
+      },
+      "extension_details": {
+        "dist20": -11.15,
+        "dist60": 4.29,
+        "dist120": 18.11,
+        "rsi14": 43.11,
+        "ret14": -7.94
+      }
+    },
+    {
+      "ticker": "BTC-USD",
+      "name": "비트코인",
+      "market": "CRYPTO",
+      "date": "2020-09-08",
+      "classification": [
+        "상승추세 내 조정",
+        "20선 이탈",
+        "재정비 구간"
+      ],
+      "buyable_score": 40.0,
+      "result_score": 51.2,
+      "extension_risk_score": 0.0,
+      "result_label": "ok",
+      "buyable_details": {
+        "support": 25,
+        "trend": 25,
+        "quality": 5,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 9.9,
+        "close20": 5.71,
+        "dd10": -1.13
+      },
+      "extension_details": {
+        "dist20": -9.66,
+        "dist60": -6.67,
+        "dist120": 0.08,
+        "rsi14": 33.92,
+        "ret14": -10.86
+      }
+    },
+    {
+      "ticker": "BTC-USD",
+      "name": "비트코인",
+      "market": "CRYPTO",
+      "date": "2023-03-10",
+      "classification": [
+        "급락 후 반전",
+        "과매도",
+        "강한 회복 출발점"
+      ],
+      "buyable_score": 45.0,
+      "result_score": 98.2,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 25,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 44.45,
+        "close20": 38.87,
+        "dd10": -0.59
+      },
+      "extension_details": {
+        "dist20": -12.14,
+        "dist60": -10.25,
+        "dist120": 2.73,
+        "rsi14": 19.56,
+        "ret14": -12.98
+      }
+    },
+    {
+      "ticker": "BTC-USD",
+      "name": "비트코인",
+      "market": "CRYPTO",
+      "date": "2024-11-04",
+      "classification": [
+        "상승추세 내 눌림",
+        "신고가 직전 조정",
+        "돌파 전 재정비"
+      ],
+      "buyable_score": 55.0,
+      "result_score": 98.4,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 15,
+        "trend": 30,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 46.96,
+        "close20": 44.54,
+        "dd10": -0.52
+      },
+      "extension_details": {
+        "dist20": -1.16,
+        "dist60": 6.21,
+        "dist120": 8.34,
+        "rsi14": 51.46,
+        "ret14": 0.66
+      }
+    },
+    {
+      "ticker": "BTC-USD",
+      "name": "비트코인",
+      "market": "CRYPTO",
+      "date": "2025-05-06",
+      "classification": [
+        "강한 상승추세",
+        "이평 상단 유지",
+        "돌파 전개형"
+      ],
+      "buyable_score": 30.0,
+      "result_score": 74.0,
+      "extension_risk_score": 11.6,
+      "result_label": "ok",
+      "buyable_details": {
+        "support": 0,
+        "trend": 20,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 15.67,
+        "close20": 13.06,
+        "dd10": -1.01
+      },
+      "extension_details": {
+        "dist20": 4.65,
+        "dist60": 12.02,
+        "dist120": 5.74,
+        "rsi14": 63.98,
+        "ret14": 3.6
+      }
+    },
+    {
+      "ticker": "ETH-USD",
+      "name": "이더리움",
+      "market": "CRYPTO",
+      "date": "2020-09-23",
+      "classification": [
+        "상승추세 내 조정",
+        "급락 눌림",
+        "반등 후보"
+      ],
+      "buyable_score": 40.0,
+      "result_score": 88.3,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 15,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 23.05,
+        "close20": 18.71,
+        "dd10": -0.8
+      },
+      "extension_details": {
+        "dist20": -11.53,
+        "dist60": -16.14,
+        "dist120": 3.37,
+        "rsi14": 41.75,
+        "ret14": -8.54
+      }
+    },
+    {
+      "ticker": "ETH-USD",
+      "name": "이더리움",
+      "market": "CRYPTO",
+      "date": "2025-05-06",
+      "classification": [
+        "바닥 탈출 직전",
+        "이평 수렴",
+        "급등 전 준비"
+      ],
+      "buyable_score": 40.0,
+      "result_score": 95.6,
+      "extension_risk_score": 2.5,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 5,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 50.79,
+        "close20": 41.27,
+        "dd10": -1.45
+      },
+      "extension_details": {
+        "dist20": 3.64,
+        "dist60": 0.45,
+        "dist120": -22.37,
+        "rsi14": 61.25,
+        "ret14": 3.29
+      }
+    },
+    {
+      "ticker": "ETH-USD",
+      "name": "이더리움",
+      "market": "CRYPTO",
+      "date": "2025-06-22",
+      "classification": [
+        "급락 조정",
+        "20선 이탈",
+        "되돌림 반등 후보"
+      ],
+      "buyable_score": 45.0,
+      "result_score": 95.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 25,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 36.35,
+        "close20": 32.07,
+        "dd10": -1.65
+      },
+      "extension_details": {
+        "dist20": -12.18,
+        "dist60": -5.98,
+        "dist120": 3.87,
+        "rsi14": 35.0,
+        "ret14": -11.25
+      }
+    },
+    {
+      "ticker": "SOL-USD",
+      "name": "솔라나",
+      "market": "CRYPTO",
+      "date": "2021-01-22",
+      "classification": [
+        "초기 강세 추세",
+        "급락 후 회복",
+        "확장 전개형"
+      ],
+      "buyable_score": 30.0,
+      "result_score": 97.3,
+      "extension_risk_score": 50.2,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 30,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 190.09,
+        "close20": 175.4,
+        "dd10": -0.91
+      },
+      "extension_details": {
+        "dist20": 6.73,
+        "dist60": 53.05,
+        "dist120": 53.93,
+        "rsi14": 51.86,
+        "ret14": 3.92
+      }
+    },
+    {
+      "ticker": "SOL-USD",
+      "name": "솔라나",
+      "market": "CRYPTO",
+      "date": "2023-10-12",
+      "classification": [
+        "눌림 후 돌파 전",
+        "이평 수렴",
+        "가속 직전"
+      ],
+      "buyable_score": 95.0,
+      "result_score": 97.6,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 65,
+        "trend": 15,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 117.14,
+        "close20": 94.65,
+        "dd10": -0.79
+      },
+      "extension_details": {
+        "dist20": -1.42,
+        "dist60": 2.78,
+        "dist120": 0.51,
+        "rsi14": 58.15,
+        "ret14": 6.73
+      }
+    },
+    {
+      "ticker": "^KS11",
+      "name": "코스피",
+      "market": "INDEX",
+      "date": "2025-05-23",
+      "classification": [
+        "시장 추세 확인",
+        "이평 상단 유지",
+        "상승 재개 전"
+      ],
+      "buyable_score": 95.0,
+      "result_score": 86.4,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 65,
+        "trend": 25,
+        "quality": 5,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 19.79,
+        "close20": 19.74,
+        "dd10": 0.15
+      },
+      "extension_details": {
+        "dist20": 0.32,
+        "dist60": 1.69,
+        "dist120": 2.64,
+        "rsi14": 59.08,
+        "ret14": 1.39
+      }
+    },
+    {
+      "ticker": "^NDX",
+      "name": "NASDAQ-100",
+      "market": "INDEX",
+      "date": "2011-10-04",
+      "classification": [
+        "금융불안 급락 후 반등",
+        "과매도 회복",
+        "추세 전환 초입"
+      ],
+      "buyable_score": 0.0,
+      "result_score": 60.4,
+      "extension_risk_score": 0.0,
+      "result_label": "ok",
+      "buyable_details": {
+        "support": 0,
+        "trend": 0,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 13.31,
+        "close20": 7.94,
+        "dd10": -1.06
+      },
+      "extension_details": {
+        "dist20": -4.03,
+        "dist60": -4.82,
+        "dist120": -6.66,
+        "rsi14": 36.62,
+        "ret14": -5.48
+      }
+    },
+    {
+      "ticker": "^NDX",
+      "name": "NASDAQ-100",
+      "market": "INDEX",
+      "date": "2023-03-13",
+      "classification": [
+        "조정 후 재가속",
+        "20선 아래 눌림",
+        "상승 재개"
+      ],
+      "buyable_score": 100.0,
+      "result_score": 61.8,
+      "extension_risk_score": 0.0,
+      "result_label": "ok",
+      "buyable_details": {
+        "support": 75,
+        "trend": 25,
+        "quality": 5,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 10.74,
+        "close20": 8.73,
+        "dd10": 0.86
+      },
+      "extension_details": {
+        "dist20": -2.13,
+        "dist60": 1.22,
+        "dist120": 2.87,
+        "rsi14": 45.7,
+        "ret14": -1.14
+      }
+    },
+    {
+      "ticker": "000250",
+      "name": "삼천당제약",
+      "market": "KR",
+      "date": "2025-08-21",
+      "classification": [
+        "60선 지지",
+        "과매도 눌림",
+        "상위 추세 유지"
+      ],
+      "buyable_score": 90.0,
+      "result_score": 96.1,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 50,
+        "trend": 30,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 27.73,
+        "close20": 24.86,
+        "dd10": -0.29
+      },
+      "extension_details": {
+        "dist20": -11.15,
+        "dist60": 1.28,
+        "dist120": 3.51,
+        "rsi14": 16.15,
+        "ret14": -15.84
+      }
+    },
+    {
+      "ticker": "000250",
+      "name": "삼천당제약",
+      "market": "KR",
+      "date": "2026-01-21",
+      "classification": [
+        "강한 추세 확장",
+        "고이격 상승",
+        "주도주 가속"
+      ],
+      "buyable_score": 0.0,
+      "result_score": 100.0,
+      "extension_risk_score": 80.6,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 30,
+        "quality": 5,
+        "penalty": 35
+      },
+      "result_details": {
+        "peak20": 136.01,
+        "close20": 119.61,
+        "dd10": 0.36
+      },
+      "extension_details": {
+        "dist20": 12.21,
+        "dist60": 20.58,
+        "dist120": 28.71,
+        "rsi14": 69.2,
+        "ret14": 20.65
+      }
+    },
+    {
+      "ticker": "000270",
+      "name": "기아",
+      "market": "KR",
+      "date": "2020-07-10",
+      "classification": [
+        "눌림 후 재출발",
+        "20선 근접",
+        "상승 재개 직전"
+      ],
+      "buyable_score": 95.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 65,
+        "trend": 15,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 34.79,
+        "close20": 31.83,
+        "dd10": 0.31
+      },
+      "extension_details": {
+        "dist20": -1.91,
+        "dist60": 0.57,
+        "dist120": -3.14,
+        "rsi14": 47.06,
+        "ret14": -1.38
+      }
+    },
+    {
+      "ticker": "000270",
+      "name": "기아",
+      "market": "KR",
+      "date": "2020-10-20",
+      "classification": [
+        "상승추세 내 변동성 확대",
+        "갭성 흔들림",
+        "돌파 전 재정비"
+      ],
+      "buyable_score": 45.0,
+      "result_score": 83.7,
+      "extension_risk_score": 8.8,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 30,
+        "quality": 5,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 31.91,
+        "close20": 24.87,
+        "dd10": -5.44
+      },
+      "extension_details": {
+        "dist20": -2.3,
+        "dist60": 6.58,
+        "dist120": 22.35,
+        "rsi14": 58.46,
+        "ret14": 5.16
+      }
+    },
+    {
+      "ticker": "000270",
+      "name": "기아",
+      "market": "KR",
+      "date": "2024-01-22",
+      "classification": [
+        "상승추세 내 조정",
+        "20선 아래 눌림",
+        "재가속 직전"
+      ],
+      "buyable_score": 95.0,
+      "result_score": 96.2,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 60,
+        "trend": 25,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 39.11,
+        "close20": 33.94,
+        "dd10": -1.26
+      },
+      "extension_details": {
+        "dist20": -5.08,
+        "dist60": 1.33,
+        "dist120": 4.62,
+        "rsi14": 23.2,
+        "ret14": -10.66
+      }
+    },
+    {
+      "ticker": "000270",
+      "name": "기아",
+      "market": "KR",
+      "date": "2025-10-13",
+      "classification": [
+        "횡보 후 추세 전환",
+        "이평 근처 압축",
+        "가속 직전"
+      ],
+      "buyable_score": 75.0,
+      "result_score": 86.2,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 65,
+        "trend": 15,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 24.83,
+        "close20": 12.46,
+        "dd10": -0.59
+      },
+      "extension_details": {
+        "dist20": -1.35,
+        "dist60": -2.02,
+        "dist120": 3.05,
+        "rsi14": 48.97,
+        "ret14": -0.3
+      }
+    },
+    {
+      "ticker": "000660",
+      "name": "SK하이닉스",
+      "market": "KR",
+      "date": "2023-10-31",
+      "classification": [
+        "상승추세 내 조정",
+        "이평 근처 흔들림",
+        "재상승 후보"
+      ],
+      "buyable_score": 80.0,
+      "result_score": 76.7,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 50,
+        "trend": 30,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 15.56,
+        "close20": 12.98,
+        "dd10": 0.6
+      },
+      "extension_details": {
+        "dist20": -4.95,
+        "dist60": -2.76,
+        "dist120": 1.61,
+        "rsi14": 45.7,
+        "ret14": -2.43
+      }
+    },
+    {
+      "ticker": "000660",
+      "name": "SK하이닉스",
+      "market": "KR",
+      "date": "2025-06-02",
+      "classification": [
+        "강한 상승추세",
+        "이평 상단 유지",
+        "추세 확장 전"
+      ],
+      "buyable_score": 45.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 30,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 43.86,
+        "close20": 34.46,
+        "dd10": 4.34
+      },
+      "extension_details": {
+        "dist20": 3.8,
+        "dist60": 7.45,
+        "dist120": 7.66,
+        "rsi14": 57.98,
+        "ret14": 4.53
+      }
+    },
+    {
+      "ticker": "000660",
+      "name": "SK하이닉스",
+      "market": "KR",
+      "date": "2025-08-22",
+      "classification": [
+        "급등 후 조정",
+        "20선 하회",
+        "되돌림 재상승 후보"
+      ],
+      "buyable_score": 25.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 25,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 43.43,
+        "close20": 40.64,
+        "dd10": 0.8
+      },
+      "extension_details": {
+        "dist20": -4.5,
+        "dist60": -4.03,
+        "dist120": 10.67,
+        "rsi14": 45.62,
+        "ret14": -2.71
+      }
+    },
+    {
+      "ticker": "000720",
+      "name": "현대건설",
+      "market": "KR",
+      "date": "2025-03-14",
+      "classification": [
+        "깊은 눌림",
+        "60선 위 유지",
+        "B형 후보"
+      ],
+      "buyable_score": 60.0,
+      "result_score": 74.2,
+      "extension_risk_score": 0.0,
+      "result_label": "ok",
+      "buyable_details": {
+        "support": 10,
+        "trend": 30,
+        "quality": 20,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 17.18,
+        "close20": 17.18,
+        "dd10": -2.91
+      },
+      "extension_details": {
+        "dist20": -6.17,
+        "dist60": 8.48,
+        "dist120": 10.53,
+        "rsi14": 37.38,
+        "ret14": -7.65
+      }
+    },
+    {
+      "ticker": "000720",
+      "name": "현대건설",
+      "market": "KR",
+      "date": "2025-03-17",
+      "classification": [
+        "눌림 후 재정렬",
+        "근접 정답",
+        "A/B 중간형"
+      ],
+      "buyable_score": 60.0,
+      "result_score": 82.8,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 10,
+        "trend": 30,
+        "quality": 20,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 17.45,
+        "close20": 17.15,
+        "dd10": -0.15
+      },
+      "extension_details": {
+        "dist20": -4.93,
+        "dist60": 9.19,
+        "dist120": 11.61,
+        "rsi14": 39.37,
+        "ret14": -6.66
+      }
+    },
+    {
+      "ticker": "000720",
+      "name": "현대건설",
+      "market": "KR",
+      "date": "2025-03-18",
+      "classification": [
+        "정답에 가까운 눌림",
+        "회복 시작",
+        "A형 후보"
+      ],
+      "buyable_score": 55.0,
+      "result_score": 81.3,
+      "extension_risk_score": 1.2,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 10,
+        "trend": 25,
+        "quality": 20,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 18.33,
+        "close20": 17.73,
+        "dd10": -1.04
+      },
+      "extension_details": {
+        "dist20": -3.11,
+        "dist60": 10.69,
+        "dist120": 13.53,
+        "rsi14": 45.83,
+        "ret14": -2.61
+      }
+    },
+    {
+      "ticker": "000720",
+      "name": "현대건설",
+      "market": "KR",
+      "date": "2025-04-07",
+      "classification": [
+        "완벽한 정답",
+        "C형 재정렬",
+        "20선 재안착"
+      ],
+      "buyable_score": 60.0,
+      "result_score": 94.5,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 15,
+        "trend": 30,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 25.9,
+        "close20": 23.59,
+        "dd10": 0.72
+      },
+      "extension_details": {
+        "dist20": 0.54,
+        "dist60": 6.56,
+        "dist120": 15.01,
+        "rsi14": 56.58,
+        "ret14": 2.98
+      }
+    },
+    {
+      "ticker": "000720",
+      "name": "현대건설",
+      "market": "KR",
+      "date": "2025-10-23",
+      "classification": [
+        "사용자 선호 추가",
+        "재정렬 후보",
+        "상위 약세 속 전환"
+      ],
+      "buyable_score": 30.0,
+      "result_score": 84.7,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 15,
+        "trend": 0,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 33.8,
+        "close20": 7.88,
+        "dd10": -0.35
+      },
+      "extension_details": {
+        "dist20": 0.32,
+        "dist60": -6.37,
+        "dist120": -8.0,
+        "rsi14": 55.78,
+        "ret14": 4.2
+      }
+    },
+    {
+      "ticker": "000720",
+      "name": "현대건설",
+      "market": "KR",
+      "date": "2025-11-25",
+      "classification": [
+        "가장 정교한 정답",
+        "B형 핵심",
+        "20선 아래 60선 지지"
+      ],
+      "buyable_score": 60.0,
+      "result_score": 98.8,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 35,
+        "trend": 10,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 29.11,
+        "close20": 15.13,
+        "dd10": 3.12
+      },
+      "extension_details": {
+        "dist20": -5.07,
+        "dist60": 0.08,
+        "dist120": -7.07,
+        "rsi14": 41.63,
+        "ret14": -5.44
+      }
+    },
+    {
+      "ticker": "000720",
+      "name": "현대건설",
+      "market": "KR",
+      "date": "2025-12-02",
+      "classification": [
+        "사용자 선호 추가",
+        "재돌파형",
+        "강한 회복"
+      ],
+      "buyable_score": 60.0,
+      "result_score": 64.4,
+      "extension_risk_score": 0.0,
+      "result_label": "ok",
+      "buyable_details": {
+        "support": 25,
+        "trend": 15,
+        "quality": 20,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 19.12,
+        "close20": 4.7,
+        "dd10": -0.15
+      },
+      "extension_details": {
+        "dist20": 4.51,
+        "dist60": 7.87,
+        "dist120": 0.81,
+        "rsi14": 57.41,
+        "ret14": 6.29
+      }
+    },
+    {
+      "ticker": "000720",
+      "name": "현대건설",
+      "market": "KR",
+      "date": "2026-02-02",
+      "classification": [
+        "사용자 선호 추가",
+        "고이격 전환",
+        "확장 직전"
+      ],
+      "buyable_score": 40.0,
+      "result_score": 100.0,
+      "extension_risk_score": 45.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 15,
+        "trend": 30,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 79.05,
+        "close20": 58.7,
+        "dd10": 2.13
+      },
+      "extension_details": {
+        "dist20": 1.39,
+        "dist60": 27.62,
+        "dist120": 42.42,
+        "rsi14": 57.87,
+        "ret14": 7.39
+      }
+    },
+    {
+      "ticker": "001440",
+      "name": "대한전선",
+      "market": "KR",
+      "date": "2021-03-09",
+      "classification": [
+        "바닥권",
+        "과매도",
+        "회복 전 단계"
+      ],
+      "buyable_score": 0.0,
+      "result_score": 91.6,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 10,
+        "quality": 5,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 31.57,
+        "close20": 23.51,
+        "dd10": -2.81
+      },
+      "extension_details": {
+        "dist20": -16.26,
+        "dist60": -26.5,
+        "dist120": -16.08,
+        "rsi14": 10.17,
+        "ret14": -29.18
+      }
+    },
+    {
+      "ticker": "001440",
+      "name": "대한전선",
+      "market": "KR",
+      "date": "2021-05-03",
+      "classification": [
+        "돌파 전 준비",
+        "이평 수렴",
+        "초기 가속 직전"
+      ],
+      "buyable_score": 60.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 35,
+        "trend": 15,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 96.15,
+        "close20": 83.02,
+        "dd10": 0.92
+      },
+      "extension_details": {
+        "dist20": -3.51,
+        "dist60": 2.36,
+        "dist120": -5.05,
+        "rsi14": 26.52,
+        "ret14": -5.8
+      }
+    },
+    {
+      "ticker": "001440",
+      "name": "대한전선",
+      "market": "KR",
+      "date": "2021-05-17",
+      "classification": [
+        "눌림 후 재가속",
+        "20선 지지형",
+        "추세 지속"
+      ],
+      "buyable_score": 70.0,
+      "result_score": 97.4,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 40,
+        "trend": 15,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 322.16,
+        "close20": 164.36,
+        "dd10": -0.87
+      },
+      "extension_details": {
+        "dist20": 1.3,
+        "dist60": 9.36,
+        "dist120": -0.88,
+        "rsi14": 55.52,
+        "ret14": 3.02
+      }
+    },
+    {
+      "ticker": "001440",
+      "name": "대한전선",
+      "market": "KR",
+      "date": "2025-09-30",
+      "classification": [
+        "이평 근처 눌림",
+        "반등 시도",
+        "재상승 후보"
+      ],
+      "buyable_score": 50.0,
+      "result_score": 97.3,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 40,
+        "trend": 10,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 84.6,
+        "close20": 74.61,
+        "dd10": -0.9
+      },
+      "extension_details": {
+        "dist20": -1.29,
+        "dist60": -2.41,
+        "dist120": 5.66,
+        "rsi14": 38.83,
+        "ret14": -4.02
+      }
+    },
+    {
+      "ticker": "003670",
+      "name": "포스코퓨처엠",
+      "market": "KR",
+      "date": "2022-10-05",
+      "classification": [
+        "급락 후 지지 탐색",
+        "주봉 강세 속 조정",
+        "과매도 완화 후보"
+      ],
+      "buyable_score": 50.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 25,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 44.74,
+        "close20": 43.73,
+        "dd10": 0.68
+      },
+      "extension_details": {
+        "dist20": -13.02,
+        "dist60": -1.32,
+        "dist120": 7.27,
+        "rsi14": 19.84,
+        "ret14": -20.49
+      }
+    },
+    {
+      "ticker": "003670",
+      "name": "포스코퓨처엠",
+      "market": "KR",
+      "date": "2023-10-20",
+      "classification": [
+        "과열 붕괴 후 급락",
+        "낙폭과대 반전 후보",
+        "고변동 약세"
+      ],
+      "buyable_score": 0.0,
+      "result_score": 27.1,
+      "extension_risk_score": 0.0,
+      "result_label": "bad",
+      "buyable_details": {
+        "support": 0,
+        "trend": 10,
+        "quality": 0,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 20.33,
+        "close20": -4.67,
+        "dd10": -22.83
+      },
+      "extension_details": {
+        "dist20": -15.37,
+        "dist60": -28.94,
+        "dist120": -23.5,
+        "rsi14": 26.69,
+        "ret14": -18.7
+      }
+    },
+    {
+      "ticker": "005380",
+      "name": "현대자동차",
+      "market": "KR",
+      "date": "2020-07-10",
+      "classification": [
+        "얕은 눌림",
+        "이평 근접",
+        "재가속 직전"
+      ],
+      "buyable_score": 55.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 40,
+        "trend": 15,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 52.09,
+        "close20": 49.54,
+        "dd10": 0.2
+      },
+      "extension_details": {
+        "dist20": -1.14,
+        "dist60": -0.27,
+        "dist120": -5.03,
+        "rsi14": 49.47,
+        "ret14": -0.2
+      }
+    },
+    {
+      "ticker": "005380",
+      "name": "현대자동차",
+      "market": "KR",
+      "date": "2025-10-13",
+      "classification": [
+        "이평 수렴",
+        "상승 재개",
+        "돌파 직전"
+      ],
+      "buyable_score": 75.0,
+      "result_score": 99.3,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 40,
+        "trend": 25,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 36.38,
+        "close20": 23.8,
+        "dd10": -0.23
+      },
+      "extension_details": {
+        "dist20": 0.43,
+        "dist60": 0.85,
+        "dist120": 5.99,
+        "rsi14": 56.36,
+        "ret14": 1.63
+      }
+    },
+    {
+      "ticker": "005850",
+      "name": "에스엘",
+      "market": "KR",
+      "date": "2020-12-23",
+      "classification": [
+        "눌림 후 안정 회복",
+        "이평 근처",
+        "추세 유지"
+      ],
+      "buyable_score": 95.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.6,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 50,
+        "trend": 30,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 76.56,
+        "close20": 68.44,
+        "dd10": 0.0
+      },
+      "extension_details": {
+        "dist20": -2.77,
+        "dist60": 3.23,
+        "dist120": 15.5,
+        "rsi14": 37.84,
+        "ret14": -5.33
+      }
+    },
+    {
+      "ticker": "005850",
+      "name": "에스엘",
+      "market": "KR",
+      "date": "2025-11-05",
+      "classification": [
+        "이평 아래 조정",
+        "반등 시도",
+        "확인 전 대기"
+      ],
+      "buyable_score": 80.0,
+      "result_score": 96.9,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 50,
+        "trend": 30,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 32.15,
+        "close20": 29.93,
+        "dd10": -1.04
+      },
+      "extension_details": {
+        "dist20": -4.92,
+        "dist60": -2.51,
+        "dist120": 0.92,
+        "rsi14": 31.41,
+        "ret14": -7.91
+      }
+    },
+    {
+      "ticker": "005930",
+      "name": "삼성전자",
+      "market": "KR",
+      "date": "2016-05-31",
+      "classification": [
+        "상승추세 지속",
+        "이평 지지형",
+        "거래량 동반"
+      ],
+      "buyable_score": 100.0,
+      "result_score": 62.4,
+      "extension_risk_score": 0.0,
+      "result_label": "ok",
+      "buyable_details": {
+        "support": 65,
+        "trend": 30,
+        "quality": 5,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 12.23,
+        "close20": 8.05,
+        "dd10": 0.23
+      },
+      "extension_details": {
+        "dist20": 1.16,
+        "dist60": 1.52,
+        "dist120": 4.43,
+        "rsi14": 50.0,
+        "ret14": 0.0
+      }
+    },
+    {
+      "ticker": "005930",
+      "name": "삼성전자",
+      "market": "KR",
+      "date": "2016-11-15",
+      "classification": [
+        "상승추세 내 조정",
+        "20선 하회",
+        "재정비 구간"
+      ],
+      "buyable_score": 45.0,
+      "result_score": 82.2,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 30,
+        "quality": 5,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 17.02,
+        "close20": 14.75,
+        "dd10": 0.06
+      },
+      "extension_details": {
+        "dist20": -4.38,
+        "dist60": -4.27,
+        "dist120": 0.51,
+        "rsi14": 46.11,
+        "ret14": -1.79
+      }
+    },
+    {
+      "ticker": "005930",
+      "name": "삼성전자",
+      "market": "KR",
+      "date": "2016-11-16",
+      "classification": [
+        "상승추세 내 반등 시도",
+        "20선 재도전",
+        "확인 전 대기"
+      ],
+      "buyable_score": 70.0,
+      "result_score": 76.4,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 65,
+        "trend": 15,
+        "quality": 5,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 15.6,
+        "close20": 14.06,
+        "dd10": -0.83
+      },
+      "extension_details": {
+        "dist20": -2.99,
+        "dist60": -3.0,
+        "dist120": 1.6,
+        "rsi14": 47.99,
+        "ret14": -0.95
+      }
+    },
+    {
+      "ticker": "005930",
+      "name": "삼성전자",
+      "market": "KR",
+      "date": "2020-11-02",
+      "classification": [
+        "중기 상승추세 내 눌림",
+        "이평 근접",
+        "재상승 후보"
+      ],
+      "buyable_score": 70.0,
+      "result_score": 88.1,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 50,
+        "trend": 25,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 21.08,
+        "close20": 16.2,
+        "dd10": 0.35
+      },
+      "extension_details": {
+        "dist20": -3.72,
+        "dist60": -1.51,
+        "dist120": 3.31,
+        "rsi14": 29.41,
+        "ret14": -5.75
+      }
+    },
+    {
+      "ticker": "005930",
+      "name": "삼성전자",
+      "market": "KR",
+      "date": "2025-09-01",
+      "classification": [
+        "상승추세 내 조정",
+        "20선 이탈",
+        "확인 전 대기"
+      ],
+      "buyable_score": 65.0,
+      "result_score": 96.7,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 35,
+        "trend": 25,
+        "quality": 5,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 27.51,
+        "close20": 24.56,
+        "dd10": 0.3
+      },
+      "extension_details": {
+        "dist20": -3.98,
+        "dist60": 3.33,
+        "dist120": 10.97,
+        "rsi14": 31.11,
+        "ret14": -4.79
+      }
+    },
+    {
+      "ticker": "005930",
+      "name": "삼성전자",
+      "market": "KR",
+      "date": "2025-09-02",
+      "classification": [
+        "상승추세 내 반등 시도",
+        "20선 재도전",
+        "확인 전 대기"
+      ],
+      "buyable_score": 50.0,
+      "result_score": 91.7,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 15,
+        "trend": 25,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 24.75,
+        "close20": 21.42,
+        "dd10": -0.43
+      },
+      "extension_details": {
+        "dist20": -1.81,
+        "dist60": 5.38,
+        "dist120": 13.2,
+        "rsi14": 40.38,
+        "ret14": -2.81
+      }
+    },
+    {
+      "ticker": "005940",
+      "name": "NH투자증권",
+      "market": "KR",
+      "date": "2024-01-18",
+      "classification": [
+        "바닥권 회복형",
+        "과매도",
+        "완만한 반등"
+      ],
+      "buyable_score": 15.0,
+      "result_score": 88.6,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 0,
+        "quality": 5,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 21.48,
+        "close20": 20.97,
+        "dd10": 0.1
+      },
+      "extension_details": {
+        "dist20": -3.43,
+        "dist60": -4.45,
+        "dist120": -4.91,
+        "rsi14": 21.43,
+        "ret14": -4.7
+      }
+    },
+    {
+      "ticker": "005940",
+      "name": "NH투자증권",
+      "market": "KR",
+      "date": "2024-04-15",
+      "classification": [
+        "눌림 회복형",
+        "20선 아래 조정",
+        "재상승 후보"
+      ],
+      "buyable_score": 70.0,
+      "result_score": 76.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 50,
+        "trend": 25,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 16.28,
+        "close20": 16.01,
+        "dd10": -1.89
+      },
+      "extension_details": {
+        "dist20": -7.15,
+        "dist60": -3.17,
+        "dist120": 2.61,
+        "rsi14": 19.41,
+        "ret14": -13.06
+      }
+    },
+    {
+      "ticker": "005940",
+      "name": "NH투자증권",
+      "market": "KR",
+      "date": "2025-04-09",
+      "classification": [
+        "급락 후 반등 시도",
+        "과매도",
+        "확인 전 대기"
+      ],
+      "buyable_score": 5.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 10,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 31.97,
+        "close20": 29.34,
+        "dd10": 3.28
+      },
+      "extension_details": {
+        "dist20": -14.2,
+        "dist60": -15.28,
+        "dist120": -13.07,
+        "rsi14": 9.66,
+        "ret14": -18.88
+      }
+    },
+    {
+      "ticker": "009150",
+      "name": "삼성전기",
+      "market": "KR",
+      "date": "2025-06-16",
+      "classification": [
+        "이평 재안착",
+        "눌림 후 회복",
+        "저점 확인형"
+      ],
+      "buyable_score": 80.0,
+      "result_score": 64.7,
+      "extension_risk_score": 6.7,
+      "result_label": "ok",
+      "buyable_details": {
+        "support": 65,
+        "trend": 5,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 13.48,
+        "close20": 8.35,
+        "dd10": 0.47
+      },
+      "extension_details": {
+        "dist20": 2.29,
+        "dist60": 1.95,
+        "dist120": -1.5,
+        "rsi14": 63.33,
+        "ret14": 8.18
+      }
+    },
+    {
+      "ticker": "009150",
+      "name": "삼성전기",
+      "market": "KR",
+      "date": "2025-07-23",
+      "classification": [
+        "얕은 눌림",
+        "20선 근처 지지",
+        "재가속 후보"
+      ],
+      "buyable_score": 70.0,
+      "result_score": 81.5,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 40,
+        "trend": 20,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 20.38,
+        "close20": 13.91,
+        "dd10": -1.18
+      },
+      "extension_details": {
+        "dist20": -0.95,
+        "dist60": 5.41,
+        "dist120": 3.72,
+        "rsi14": 33.67,
+        "ret14": -4.5
+      }
+    },
+    {
+      "ticker": "009150",
+      "name": "삼성전기",
+      "market": "KR",
+      "date": "2025-11-19",
+      "classification": [
+        "고변동 조정",
+        "60선 위 유지",
+        "회복 후 재확장"
+      ],
+      "buyable_score": 35.0,
+      "result_score": 88.8,
+      "extension_risk_score": 14.2,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 10,
+        "trend": 30,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 31.4,
+        "close20": 20.23,
+        "dd10": -3.72
+      },
+      "extension_details": {
+        "dist20": -4.86,
+        "dist60": 7.3,
+        "dist120": 26.81,
+        "rsi14": 44.57,
+        "ret14": -4.44
+      }
+    },
+    {
+      "ticker": "010120",
+      "name": "LS ELECTRIC",
+      "market": "KR",
+      "date": "2024-02-27",
+      "classification": [
+        "급락 후 회복",
+        "과매도 흔들림",
+        "반전 출발점"
+      ],
+      "buyable_score": 0.0,
+      "result_score": 99.5,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 5,
+        "quality": 5,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 58.07,
+        "close20": 56.33,
+        "dd10": -0.16
+      },
+      "extension_details": {
+        "dist20": -6.69,
+        "dist60": -9.8,
+        "dist120": -17.06,
+        "rsi14": 33.95,
+        "ret14": -7.6
+      }
+    },
+    {
+      "ticker": "010130",
+      "name": "고려아연",
+      "market": "KR",
+      "date": "2024-09-09",
+      "classification": [
+        "20선 근처 눌림",
+        "거래량 감소 조정",
+        "급등 전 정리"
+      ],
+      "buyable_score": 85.0,
+      "result_score": 96.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 40,
+        "trend": 30,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 57.09,
+        "close20": 54.44,
+        "dd10": -1.32
+      },
+      "extension_details": {
+        "dist20": -0.67,
+        "dist60": 2.42,
+        "dist120": 6.2,
+        "rsi14": 48.15,
+        "ret14": -0.56
+      }
+    },
+    {
+      "ticker": "012450",
+      "name": "한화에어로스페이스",
+      "market": "KR",
+      "date": "2022-07-13",
+      "classification": [
+        "바닥권 반등",
+        "과매도",
+        "회복 시작"
+      ],
+      "buyable_score": 5.0,
+      "result_score": 94.9,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 10,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 77.18,
+        "close20": 69.75,
+        "dd10": -1.69
+      },
+      "extension_details": {
+        "dist20": -11.88,
+        "dist60": -19.57,
+        "dist120": -18.91,
+        "rsi14": 40.41,
+        "ret14": -7.24
+      }
+    },
+    {
+      "ticker": "012450",
+      "name": "한화에어로스페이스",
+      "market": "KR",
+      "date": "2022-10-13",
+      "classification": [
+        "극단 조정",
+        "과매도 회복",
+        "반등 시작점"
+      ],
+      "buyable_score": 10.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 15,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 50.57,
+        "close20": 38.98,
+        "dd10": 2.28
+      },
+      "extension_details": {
+        "dist20": -21.2,
+        "dist60": -21.37,
+        "dist120": -11.22,
+        "rsi14": 13.45,
+        "ret14": -28.73
+      }
+    },
+    {
+      "ticker": "012450",
+      "name": "한화에어로스페이스",
+      "market": "KR",
+      "date": "2023-01-05",
+      "classification": [
+        "조정 후 재가속",
+        "거래량 증가",
+        "폭발 직전"
+      ],
+      "buyable_score": 75.0,
+      "result_score": 90.6,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 50,
+        "trend": 30,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 26.35,
+        "close20": 24.85,
+        "dd10": -1.5
+      },
+      "extension_details": {
+        "dist20": -5.74,
+        "dist60": -2.83,
+        "dist120": -1.39,
+        "rsi14": 38.46,
+        "ret14": -6.31
+      }
+    },
+    {
+      "ticker": "015750",
+      "name": "성우하이텍",
+      "market": "KR",
+      "date": "2020-12-22",
+      "classification": [
+        "압축 후 폭발 직전",
+        "이평 근접",
+        "상승 시작점"
+      ],
+      "buyable_score": 90.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 50,
+        "trend": 25,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 137.91,
+        "close20": 123.01,
+        "dd10": 0.26
+      },
+      "extension_details": {
+        "dist20": -2.29,
+        "dist60": 0.48,
+        "dist120": 12.37,
+        "rsi14": 42.05,
+        "ret14": -3.53
+      }
+    },
+    {
+      "ticker": "015750",
+      "name": "성우하이텍",
+      "market": "KR",
+      "date": "2023-02-10",
+      "classification": [
+        "돌파 초입",
+        "거래량 증가",
+        "가속 직전"
+      ],
+      "buyable_score": 70.0,
+      "result_score": 93.9,
+      "extension_risk_score": 17.8,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 50,
+        "trend": 15,
+        "quality": 5,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 47.04,
+        "close20": 31.11,
+        "dd10": -2.04
+      },
+      "extension_details": {
+        "dist20": 5.93,
+        "dist60": 1.95,
+        "dist120": 3.23,
+        "rsi14": 83.89,
+        "ret14": 10.32
+      }
+    },
+    {
+      "ticker": "015760",
+      "name": "한국전력",
+      "market": "KR",
+      "date": "2024-01-19",
+      "classification": [
+        "과매도 후 회복",
+        "단기 급락",
+        "반등 후보"
+      ],
+      "buyable_score": 65.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 50,
+        "trend": 25,
+        "quality": 5,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 32.83,
+        "close20": 29.78,
+        "dd10": 0.22
+      },
+      "extension_details": {
+        "dist20": -3.99,
+        "dist60": -1.58,
+        "dist120": -1.09,
+        "rsi14": 39.47,
+        "ret14": -4.6
+      }
+    },
+    {
+      "ticker": "015760",
+      "name": "한국전력",
+      "market": "KR",
+      "date": "2025-04-03",
+      "classification": [
+        "눌림 후 반등 재개",
+        "60선 부근 지지",
+        "회복형"
+      ],
+      "buyable_score": 100.0,
+      "result_score": 86.5,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 75,
+        "trend": 15,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 20.93,
+        "close20": 19.07,
+        "dd10": -0.47
+      },
+      "extension_details": {
+        "dist20": -2.66,
+        "dist60": 0.36,
+        "dist120": -0.94,
+        "rsi14": 36.36,
+        "ret14": -3.37
+      }
+    },
+    {
+      "ticker": "035420",
+      "name": "NAVER",
+      "market": "KR",
+      "date": "2019-07-02",
+      "classification": [
+        "바닥권 회복",
+        "20선 회복",
+        "저점 탈출 시도"
+      ],
+      "buyable_score": 60.0,
+      "result_score": 91.3,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 40,
+        "trend": 5,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 23.48,
+        "close20": 20.43,
+        "dd10": 0.0
+      },
+      "extension_details": {
+        "dist20": 2.04,
+        "dist60": -1.34,
+        "dist120": -6.64,
+        "rsi14": 53.57,
+        "ret14": 0.88
+      }
+    },
+    {
+      "ticker": "035420",
+      "name": "NAVER",
+      "market": "KR",
+      "date": "2020-04-13",
+      "classification": [
+        "급락 후 추세 복원",
+        "20선 안착",
+        "상승 재개 준비"
+      ],
+      "buyable_score": 50.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 15,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 36.45,
+        "close20": 28.31,
+        "dd10": 0.3
+      },
+      "extension_details": {
+        "dist20": 3.22,
+        "dist60": -4.62,
+        "dist120": -4.36,
+        "rsi14": 59.43,
+        "ret14": 6.41
+      }
+    },
+    {
+      "ticker": "035720",
+      "name": "카카오",
+      "market": "KR",
+      "date": "2020-03-19",
+      "classification": [
+        "하락추세",
+        "투매성 하락",
+        "바닥권 후보"
+      ],
+      "buyable_score": 10.0,
+      "result_score": 98.3,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 20,
+        "quality": 5,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 28.73,
+        "close20": 28.36,
+        "dd10": 0.37
+      },
+      "extension_details": {
+        "dist20": -20.64,
+        "dist60": -19.39,
+        "dist120": -14.15,
+        "rsi14": 20.31,
+        "ret14": -22.09
+      }
+    },
+    {
+      "ticker": "035720",
+      "name": "카카오",
+      "market": "KR",
+      "date": "2020-10-27",
+      "classification": [
+        "상승추세 내 조정",
+        "이평 이탈 조정",
+        "재상승 후보"
+      ],
+      "buyable_score": 30.0,
+      "result_score": 66.5,
+      "extension_risk_score": 0.0,
+      "result_label": "ok",
+      "buyable_details": {
+        "support": 25,
+        "trend": 15,
+        "quality": 5,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 13.92,
+        "close20": 11.68,
+        "dd10": -1.8
+      },
+      "extension_details": {
+        "dist20": -7.11,
+        "dist60": -9.68,
+        "dist120": 3.8,
+        "rsi14": 10.08,
+        "ret14": -12.45
+      }
+    },
+    {
+      "ticker": "042600",
+      "name": "새로닉스",
+      "market": "KR",
+      "date": "2020-06-15",
+      "classification": [
+        "얕은 조정",
+        "반등 준비",
+        "횡보 후 회복"
+      ],
+      "buyable_score": 70.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 35,
+        "trend": 20,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 60.42,
+        "close20": 32.05,
+        "dd10": 0.18
+      },
+      "extension_details": {
+        "dist20": -5.39,
+        "dist60": 2.69,
+        "dist120": -7.07,
+        "rsi14": 40.0,
+        "ret14": -6.09
+      }
+    },
+    {
+      "ticker": "042600",
+      "name": "새로닉스",
+      "market": "KR",
+      "date": "2020-10-27",
+      "classification": [
+        "추세 조정",
+        "60선 위 유지",
+        "완만한 재상승"
+      ],
+      "buyable_score": 40.0,
+      "result_score": 66.5,
+      "extension_risk_score": 19.3,
+      "result_label": "ok",
+      "buyable_details": {
+        "support": 10,
+        "trend": 30,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 13.81,
+        "close20": 13.81,
+        "dd10": -3.17
+      },
+      "extension_details": {
+        "dist20": -8.48,
+        "dist60": 8.1,
+        "dist120": 31.05,
+        "rsi14": 35.69,
+        "ret14": -12.56
+      }
+    },
+    {
+      "ticker": "042600",
+      "name": "새로닉스",
+      "market": "KR",
+      "date": "2021-03-09",
+      "classification": [
+        "급락 조정",
+        "과매도 회복",
+        "반등 시작점"
+      ],
+      "buyable_score": 30.0,
+      "result_score": 97.1,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 15,
+        "quality": 5,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 37.89,
+        "close20": 36.81,
+        "dd10": -0.98
+      },
+      "extension_details": {
+        "dist20": -17.94,
+        "dist60": -23.07,
+        "dist120": 3.78,
+        "rsi14": 15.72,
+        "ret14": -27.48
+      }
+    },
+    {
+      "ticker": "042600",
+      "name": "새로닉스",
+      "market": "KR",
+      "date": "2021-08-04",
+      "classification": [
+        "눌림 후 폭발 직전",
+        "20선 아래 압축",
+        "급등 출발점"
+      ],
+      "buyable_score": 90.0,
+      "result_score": 97.3,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 60,
+        "trend": 20,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 64.71,
+        "close20": 27.15,
+        "dd10": -0.9
+      },
+      "extension_details": {
+        "dist20": -4.84,
+        "dist60": 2.18,
+        "dist120": -0.17,
+        "rsi14": 24.62,
+        "ret14": -12.99
+      }
+    },
+    {
+      "ticker": "042700",
+      "name": "한미반도체",
+      "market": "KR",
+      "date": "2020-07-02",
+      "classification": [
+        "약세권 반등 후보",
+        "낙폭과대 조정",
+        "과매도 완화"
+      ],
+      "buyable_score": 0.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 5,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 72.55,
+        "close20": 67.12,
+        "dd10": 0.41
+      },
+      "extension_details": {
+        "dist20": -7.46,
+        "dist60": -10.34,
+        "dist120": -11.88,
+        "rsi14": 30.21,
+        "ret14": -9.36
+      }
+    },
+    {
+      "ticker": "042700",
+      "name": "한미반도체",
+      "market": "KR",
+      "date": "2020-10-27",
+      "classification": [
+        "조정 후 재정비",
+        "이평 아래 눌림",
+        "회복 전 단계"
+      ],
+      "buyable_score": 45.0,
+      "result_score": 95.7,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 15,
+        "quality": 20,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 29.21,
+        "close20": 26.73,
+        "dd10": -1.09
+      },
+      "extension_details": {
+        "dist20": -5.39,
+        "dist60": -7.01,
+        "dist120": 2.38,
+        "rsi14": 43.75,
+        "ret14": -3.81
+      }
+    },
+    {
+      "ticker": "042700",
+      "name": "한미반도체",
+      "market": "KR",
+      "date": "2023-03-15",
+      "classification": [
+        "60선 지지",
+        "눌림 후 재가속 후보",
+        "상위 프레임 강세"
+      ],
+      "buyable_score": 75.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 35,
+        "trend": 25,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 69.01,
+        "close20": 43.01,
+        "dd10": 0.07
+      },
+      "extension_details": {
+        "dist20": -8.47,
+        "dist60": 0.78,
+        "dist120": 7.57,
+        "rsi14": 33.33,
+        "ret14": -8.02
+      }
+    },
+    {
+      "ticker": "042700",
+      "name": "한미반도체",
+      "market": "KR",
+      "date": "2025-09-26",
+      "classification": [
+        "이평 수렴",
+        "중립 조정",
+        "방향성 대기"
+      ],
+      "buyable_score": 65.0,
+      "result_score": 100.0,
+      "extension_risk_score": 6.3,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 40,
+        "trend": 15,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 77.28,
+        "close20": 60.02,
+        "dd10": 0.11
+      },
+      "extension_details": {
+        "dist20": 0.85,
+        "dist60": 0.69,
+        "dist120": 5.03,
+        "rsi14": 63.16,
+        "ret14": 8.45
+      }
+    },
+    {
+      "ticker": "047810",
+      "name": "한국항공우주",
+      "market": "KR",
+      "date": "2025-02-17",
+      "classification": [
+        "이평 재정렬",
+        "20선 위 회복",
+        "추세 재개 준비"
+      ],
+      "buyable_score": 90.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 65,
+        "trend": 15,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 80.48,
+        "close20": 56.54,
+        "dd10": 0.92
+      },
+      "extension_details": {
+        "dist20": 2.7,
+        "dist60": -2.71,
+        "dist120": -2.65,
+        "rsi14": 52.5,
+        "ret14": 1.31
+      }
+    },
+    {
+      "ticker": "047810",
+      "name": "한국항공우주",
+      "market": "KR",
+      "date": "2025-08-20",
+      "classification": [
+        "상위 강세 속 조정",
+        "20선 아래 눌림",
+        "재가속 대기"
+      ],
+      "buyable_score": 80.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 50,
+        "trend": 25,
+        "quality": 20,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 35.0,
+        "close20": 30.68,
+        "dd10": 1.02
+      },
+      "extension_details": {
+        "dist20": -4.74,
+        "dist60": -2.8,
+        "dist120": 2.78,
+        "rsi14": 35.81,
+        "ret14": -6.88
+      }
+    },
+    {
+      "ticker": "051910",
+      "name": "LG화학",
+      "market": "KR",
+      "date": "2020-05-13",
+      "classification": [
+        "이평 위 반등",
+        "추세 유지",
+        "재가속 후보"
+      ],
+      "buyable_score": 100.0,
+      "result_score": 86.2,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 65,
+        "trend": 25,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 26.7,
+        "close20": 25.0,
+        "dd10": -3.12
+      },
+      "extension_details": {
+        "dist20": 0.54,
+        "dist60": 1.65,
+        "dist120": 4.61,
+        "rsi14": 50.26,
+        "ret14": 0.14
+      }
+    },
+    {
+      "ticker": "052690",
+      "name": "한전기술",
+      "market": "KR",
+      "date": "2021-02-26",
+      "classification": [
+        "눌림 후 저점 다지기",
+        "이평 근접",
+        "재가속 출발점"
+      ],
+      "buyable_score": 100.0,
+      "result_score": 97.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 65,
+        "trend": 30,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 27.71,
+        "close20": 22.57,
+        "dd10": 0.29
+      },
+      "extension_details": {
+        "dist20": -1.35,
+        "dist60": 0.24,
+        "dist120": 2.66,
+        "rsi14": 46.43,
+        "ret14": -1.13
+      }
+    },
+    {
+      "ticker": "052690",
+      "name": "한전기술",
+      "market": "KR",
+      "date": "2025-06-04",
+      "classification": [
+        "이평 부근 눌림",
+        "급등 직전",
+        "폭발 출발점"
+      ],
+      "buyable_score": 70.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 65,
+        "trend": 10,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 99.18,
+        "close20": 52.7,
+        "dd10": 5.73
+      },
+      "extension_details": {
+        "dist20": -2.32,
+        "dist60": -0.05,
+        "dist120": -0.58,
+        "rsi14": 48.65,
+        "ret14": -0.97
+      }
+    },
+    {
+      "ticker": "064350",
+      "name": "현대로템",
+      "market": "KR",
+      "date": "2024-12-10",
+      "classification": [
+        "과매도 급락",
+        "낙폭과대 반전 후보",
+        "상위 프레임 강세"
+      ],
+      "buyable_score": 5.0,
+      "result_score": 86.6,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 10,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 22.39,
+        "close20": 18.91,
+        "dd10": -1.09
+      },
+      "extension_details": {
+        "dist20": -18.09,
+        "dist60": -21.5,
+        "dist120": -12.11,
+        "rsi14": 21.94,
+        "ret14": -31.45
+      }
+    },
+    {
+      "ticker": "064350",
+      "name": "현대로템",
+      "market": "KR",
+      "date": "2025-02-03",
+      "classification": [
+        "이평 수렴 돌파",
+        "재정렬 완료",
+        "상승 재개"
+      ],
+      "buyable_score": 95.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 65,
+        "trend": 15,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 66.08,
+        "close20": 52.37,
+        "dd10": 0.53
+      },
+      "extension_details": {
+        "dist20": 2.44,
+        "dist60": 2.79,
+        "dist120": 2.78,
+        "rsi14": 56.46,
+        "ret14": 3.45
+      }
+    },
+    {
+      "ticker": "064350",
+      "name": "현대로템",
+      "market": "KR",
+      "date": "2025-05-13",
+      "classification": [
+        "강한 추세 속 조정",
+        "20선 눌림",
+        "주도주 재가속 후보"
+      ],
+      "buyable_score": 40.0,
+      "result_score": 90.7,
+      "extension_risk_score": 20.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 10,
+        "trend": 30,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 68.57,
+        "close20": 68.57,
+        "dd10": -3.1
+      },
+      "extension_details": {
+        "dist20": -4.43,
+        "dist60": 5.6,
+        "dist120": 35.34,
+        "rsi14": 43.39,
+        "ret14": -7.06
+      }
+    },
+    {
+      "ticker": "066570",
+      "name": "LG전자",
+      "market": "KR",
+      "date": "2020-06-29",
+      "classification": [
+        "눌림 후 재상승",
+        "20선 아래 조정",
+        "회복형"
+      ],
+      "buyable_score": 45.0,
+      "result_score": 86.3,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 10,
+        "trend": 20,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 20.79,
+        "close20": 15.91,
+        "dd10": -0.47
+      },
+      "extension_details": {
+        "dist20": -3.18,
+        "dist60": 8.97,
+        "dist120": 5.85,
+        "rsi14": 43.4,
+        "ret14": -4.65
+      }
+    },
+    {
+      "ticker": "066570",
+      "name": "LG전자",
+      "market": "KR",
+      "date": "2020-12-22",
+      "classification": [
+        "급등 직전",
+        "이평 위 정지",
+        "폭발 출발점"
+      ],
+      "buyable_score": 80.0,
+      "result_score": 96.4,
+      "extension_risk_score": 4.7,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 40,
+        "trend": 30,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 109.33,
+        "close20": 92.52,
+        "dd10": -1.19
+      },
+      "extension_details": {
+        "dist20": 0.35,
+        "dist60": 2.4,
+        "dist120": 8.12,
+        "rsi14": 62.35,
+        "ret14": 7.33
+      }
+    },
+    {
+      "ticker": "068270",
+      "name": "셀트리온",
+      "market": "KR",
+      "date": "2015-08-25",
+      "classification": [
+        "급락 후 기술적 반등",
+        "거래량 확대",
+        "변동성 회복"
+      ],
+      "buyable_score": 10.0,
+      "result_score": 18.3,
+      "extension_risk_score": 0.0,
+      "result_label": "bad",
+      "buyable_details": {
+        "support": 0,
+        "trend": 10,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 6.38,
+        "close20": 0.99,
+        "dd10": -7.39
+      },
+      "extension_details": {
+        "dist20": -8.48,
+        "dist60": -9.6,
+        "dist120": -8.54,
+        "rsi14": 37.69,
+        "ret14": -12.42
+      }
+    },
+    {
+      "ticker": "068270",
+      "name": "셀트리온",
+      "market": "KR",
+      "date": "2017-08-04",
+      "classification": [
+        "추세 조정",
+        "반등 시도",
+        "확인 전 대기"
+      ],
+      "buyable_score": 70.0,
+      "result_score": 70.1,
+      "extension_risk_score": 0.0,
+      "result_label": "ok",
+      "buyable_details": {
+        "support": 50,
+        "trend": 25,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 16.18,
+        "close20": 9.26,
+        "dd10": 0.29
+      },
+      "extension_details": {
+        "dist20": -6.8,
+        "dist60": -2.71,
+        "dist120": 2.69,
+        "rsi14": 31.84,
+        "ret14": -7.32
+      }
+    },
+    {
+      "ticker": "075580",
+      "name": "세진중공업",
+      "market": "KR",
+      "date": "2025-04-07",
+      "classification": [
+        "과매도 급락",
+        "반등 시작점",
+        "회복 가속형"
+      ],
+      "buyable_score": 5.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 10,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 46.57,
+        "close20": 45.17,
+        "dd10": 1.71
+      },
+      "extension_details": {
+        "dist20": -11.46,
+        "dist60": -22.53,
+        "dist120": -19.43,
+        "rsi14": 17.01,
+        "ret14": -19.85
+      }
+    },
+    {
+      "ticker": "080220",
+      "name": "제주반도체",
+      "market": "KR",
+      "date": "2023-11-13",
+      "classification": [
+        "눌림 후 재가속",
+        "이평 상단 유지",
+        "확장 직전"
+      ],
+      "buyable_score": 55.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 20,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 157.68,
+        "close20": 147.51,
+        "dd10": 0.55
+      },
+      "extension_details": {
+        "dist20": 4.01,
+        "dist60": 5.28,
+        "dist120": -1.71,
+        "rsi14": 59.15,
+        "ret14": 8.25
+      }
+    },
+    {
+      "ticker": "080220",
+      "name": "제주반도체",
+      "market": "KR",
+      "date": "2025-01-13",
+      "classification": [
+        "급등 직전",
+        "저점 다지기",
+        "폭발 출발점"
+      ],
+      "buyable_score": 40.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 15,
+        "trend": 5,
+        "quality": 20,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 116.39,
+        "close20": 86.45,
+        "dd10": 0.11
+      },
+      "extension_details": {
+        "dist20": 1.2,
+        "dist60": -5.78,
+        "dist120": -20.9,
+        "rsi14": 53.5,
+        "ret14": 3.25
+      }
+    },
+    {
+      "ticker": "080220",
+      "name": "제주반도체",
+      "market": "KR",
+      "date": "2025-12-18",
+      "classification": [
+        "조정 후 회복",
+        "20선 아래 대기",
+        "반등 후보"
+      ],
+      "buyable_score": 50.0,
+      "result_score": 99.2,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 40,
+        "trend": 10,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 91.07,
+        "close20": 62.22,
+        "dd10": -0.27
+      },
+      "extension_details": {
+        "dist20": -2.31,
+        "dist60": -7.29,
+        "dist120": 3.24,
+        "rsi14": 41.89,
+        "ret14": -2.55
+      }
+    },
+    {
+      "ticker": "086280",
+      "name": "현대글로비스",
+      "market": "KR",
+      "date": "2024-06-13",
+      "classification": [
+        "이평 근처 조정",
+        "약한 눌림",
+        "추세 유지"
+      ],
+      "buyable_score": 65.0,
+      "result_score": 98.3,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 65,
+        "trend": 10,
+        "quality": 5,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 43.37,
+        "close20": 40.59,
+        "dd10": -0.56
+      },
+      "extension_details": {
+        "dist20": -2.73,
+        "dist60": -0.95,
+        "dist120": -0.99,
+        "rsi14": 36.45,
+        "ret14": -4.47
+      }
+    },
+    {
+      "ticker": "086280",
+      "name": "현대글로비스",
+      "market": "KR",
+      "date": "2025-05-08",
+      "classification": [
+        "낙폭과대 반전 후보",
+        "이평 아래 급락",
+        "월봉 강세 유지"
+      ],
+      "buyable_score": 0.0,
+      "result_score": 81.6,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 0,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 16.97,
+        "close20": 14.51,
+        "dd10": 0.09
+      },
+      "extension_details": {
+        "dist20": -4.53,
+        "dist60": -12.48,
+        "dist120": -13.49,
+        "rsi14": 41.62,
+        "ret14": -5.01
+      }
+    },
+    {
+      "ticker": "086280",
+      "name": "현대글로비스",
+      "market": "KR",
+      "date": "2025-11-24",
+      "classification": [
+        "상위 강세 속 조정",
+        "20선 아래 눌림",
+        "재정비 구간"
+      ],
+      "buyable_score": 35.0,
+      "result_score": 81.4,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 10,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 18.31,
+        "close20": 13.51,
+        "dd10": 0.06
+      },
+      "extension_details": {
+        "dist20": -4.76,
+        "dist60": -7.94,
+        "dist120": 0.6,
+        "rsi14": 38.01,
+        "ret14": -4.92
+      }
+    },
+    {
+      "ticker": "086520",
+      "name": "에코프로",
+      "market": "KR",
+      "date": "2022-06-23",
+      "classification": [
+        "하락추세",
+        "투매성 하락",
+        "바닥권 탐색"
+      ],
+      "buyable_score": 0.0,
+      "result_score": 96.4,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 0,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 45.77,
+        "close20": 34.14,
+        "dd10": -1.21
+      },
+      "extension_details": {
+        "dist20": -13.96,
+        "dist60": -21.59,
+        "dist120": -23.61,
+        "rsi14": 22.03,
+        "ret14": -18.97
+      }
+    },
+    {
+      "ticker": "086520",
+      "name": "에코프로",
+      "market": "KR",
+      "date": "2022-07-13",
+      "classification": [
+        "바닥권 반등 시도",
+        "선행 신호",
+        "돌파 직전 후보"
+      ],
+      "buyable_score": 0.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 0,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 78.53,
+        "close20": 72.88,
+        "dd10": 7.11
+      },
+      "extension_details": {
+        "dist20": -4.34,
+        "dist60": -13.01,
+        "dist120": -16.51,
+        "rsi14": 53.48,
+        "ret14": 4.07
+      }
+    },
+    {
+      "ticker": "086520",
+      "name": "에코프로",
+      "market": "KR",
+      "date": "2022-12-29",
+      "classification": [
+        "하락추세",
+        "연속 조정 말기",
+        "약한 바닥권"
+      ],
+      "buyable_score": 15.0,
+      "result_score": 94.8,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 10,
+        "quality": 20,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 26.11,
+        "close20": 19.22,
+        "dd10": 2.52
+      },
+      "extension_details": {
+        "dist20": -9.55,
+        "dist60": -17.62,
+        "dist120": -10.61,
+        "rsi14": 38.04,
+        "ret14": -7.06
+      }
+    },
+    {
+      "ticker": "086520",
+      "name": "에코프로",
+      "market": "KR",
+      "date": "2025-10-13",
+      "classification": [
+        "반전 초입",
+        "바닥 탈출 시도",
+        "초기 추세 전환"
+      ],
+      "buyable_score": 75.0,
+      "result_score": 99.4,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 65,
+        "trend": 15,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 110.7,
+        "close20": 80.86,
+        "dd10": -0.21
+      },
+      "extension_details": {
+        "dist20": -0.49,
+        "dist60": -3.92,
+        "dist120": 1.07,
+        "rsi14": 47.44,
+        "ret14": -1.22
+      }
+    },
+    {
+      "ticker": "086520",
+      "name": "에코프로",
+      "market": "KR",
+      "date": "2025-11-24",
+      "classification": [
+        "급등 후 눌림",
+        "주도주 조정",
+        "20선 이탈 조정"
+      ],
+      "buyable_score": 20.0,
+      "result_score": 97.6,
+      "extension_risk_score": 24.5,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 25,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 61.49,
+        "close20": 30.15,
+        "dd10": -0.8
+      },
+      "extension_details": {
+        "dist20": -15.28,
+        "dist60": 12.83,
+        "dist120": 31.17,
+        "rsi14": 27.23,
+        "ret14": -21.32
+      }
+    },
+    {
+      "ticker": "086520",
+      "name": "에코프로",
+      "market": "KR",
+      "date": "2025-11-25",
+      "classification": [
+        "급등 후 눌림 지속",
+        "주도주 조정",
+        "확인 전 대기"
+      ],
+      "buyable_score": 20.0,
+      "result_score": 100.0,
+      "extension_risk_score": 22.3,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 25,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 61.7,
+        "close20": 29.39,
+        "dd10": 1.06
+      },
+      "extension_details": {
+        "dist20": -14.34,
+        "dist60": 12.13,
+        "dist120": 30.39,
+        "rsi14": 29.05,
+        "ret14": -18.97
+      }
+    },
+    {
+      "ticker": "086790",
+      "name": "하나금융지주",
+      "market": "KR",
+      "date": "2024-01-22",
+      "classification": [
+        "이평 수렴 조정",
+        "약한 눌림",
+        "방향성 대기"
+      ],
+      "buyable_score": 80.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 65,
+        "trend": 20,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 44.24,
+        "close20": 35.76,
+        "dd10": 0.85
+      },
+      "extension_details": {
+        "dist20": -1.7,
+        "dist60": -0.8,
+        "dist120": 0.19,
+        "rsi14": 36.28,
+        "ret14": -3.62
+      }
+    },
+    {
+      "ticker": "086790",
+      "name": "하나금융지주",
+      "market": "KR",
+      "date": "2025-04-09",
+      "classification": [
+        "급락 후 반등",
+        "과매도 심화",
+        "낙폭과대 회복"
+      ],
+      "buyable_score": 0.0,
+      "result_score": 95.2,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 10,
+        "quality": 5,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 26.44,
+        "close20": 24.33,
+        "dd10": 2.49
+      },
+      "extension_details": {
+        "dist20": -13.06,
+        "dist60": -12.98,
+        "dist120": -13.8,
+        "rsi14": 15.28,
+        "ret14": -16.08
+      }
+    },
+    {
+      "ticker": "086790",
+      "name": "하나금융지주",
+      "market": "KR",
+      "date": "2025-11-03",
+      "classification": [
+        "고점권 재정비",
+        "20선 근처 조정",
+        "상승 추세 유지"
+      ],
+      "buyable_score": 80.0,
+      "result_score": 70.8,
+      "extension_risk_score": 0.0,
+      "result_label": "ok",
+      "buyable_details": {
+        "support": 65,
+        "trend": 25,
+        "quality": 5,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 18.11,
+        "close20": 10.28,
+        "dd10": -1.29
+      },
+      "extension_details": {
+        "dist20": -1.44,
+        "dist60": -0.28,
+        "dist120": 3.15,
+        "rsi14": 55.56,
+        "ret14": 1.42
+      }
+    },
+    {
+      "ticker": "101490",
+      "name": "에스앤에스텍",
+      "market": "KR",
+      "date": "2019-06-04",
+      "classification": [
+        "급락 후 반전",
+        "과매도",
+        "시세 출발점"
+      ],
+      "buyable_score": 35.0,
+      "result_score": 97.2,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 15,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 55.93,
+        "close20": 31.45,
+        "dd10": -0.94
+      },
+      "extension_details": {
+        "dist20": -12.01,
+        "dist60": -14.41,
+        "dist120": 1.12,
+        "rsi14": 22.64,
+        "ret14": -17.93
+      }
+    },
+    {
+      "ticker": "101490",
+      "name": "에스앤에스텍",
+      "market": "KR",
+      "date": "2019-07-09",
+      "classification": [
+        "눌림 후 재가속",
+        "20선 아래 흔들림",
+        "확장 전 준비"
+      ],
+      "buyable_score": 55.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 30,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 58.71,
+        "close20": 40.0,
+        "dd10": 1.29
+      },
+      "extension_details": {
+        "dist20": -16.14,
+        "dist60": -7.49,
+        "dist120": 3.55,
+        "rsi14": 27.93,
+        "ret14": -21.12
+      }
+    },
+    {
+      "ticker": "101490",
+      "name": "에스앤에스텍",
+      "market": "KR",
+      "date": "2025-04-09",
+      "classification": [
+        "깊은 조정",
+        "반등 시도",
+        "확인 전 대기"
+      ],
+      "buyable_score": 55.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 30,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 36.98,
+        "close20": 29.62,
+        "dd10": 3.59
+      },
+      "extension_details": {
+        "dist20": -15.29,
+        "dist60": -10.11,
+        "dist120": 1.47,
+        "rsi14": 21.72,
+        "ret14": -21.33
+      }
+    },
+    {
+      "ticker": "105560",
+      "name": "KB금융",
+      "market": "KR",
+      "date": "2025-04-09",
+      "classification": [
+        "급락 후 반등",
+        "과매도 완화",
+        "낙폭과대 회복"
+      ],
+      "buyable_score": 0.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 0,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 33.85,
+        "close20": 30.04,
+        "dd10": 2.26
+      },
+      "extension_details": {
+        "dist20": -9.84,
+        "dist60": -13.91,
+        "dist120": -18.26,
+        "rsi14": 18.68,
+        "ret14": -13.85
+      }
+    },
+    {
+      "ticker": "207940",
+      "name": "삼성바이오로직스",
+      "market": "KR",
+      "date": "2020-03-19",
+      "classification": [
+        "코로나 급락 바닥",
+        "과매도",
+        "강한 되돌림 출발점"
+      ],
+      "buyable_score": 20.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 25,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 64.75,
+        "close20": 54.64,
+        "dd10": 1.5
+      },
+      "extension_details": {
+        "dist20": -21.29,
+        "dist60": -21.29,
+        "dist120": -12.74,
+        "rsi14": 21.9,
+        "ret14": -21.04
+      }
+    },
+    {
+      "ticker": "207940",
+      "name": "삼성바이오로직스",
+      "market": "KR",
+      "date": "2024-07-08",
+      "classification": [
+        "상승 추세 내 눌림",
+        "이평 위 유지",
+        "재확장 후보"
+      ],
+      "buyable_score": 65.0,
+      "result_score": 82.7,
+      "extension_risk_score": 11.7,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 50,
+        "trend": 5,
+        "quality": 10,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 21.21,
+        "close20": 12.37,
+        "dd10": -0.13
+      },
+      "extension_details": {
+        "dist20": 4.76,
+        "dist60": 3.18,
+        "dist120": 0.22,
+        "rsi14": 65.85,
+        "ret14": 7.03
+      }
+    },
+    {
+      "ticker": "272210",
+      "name": "한화시스템",
+      "market": "KR",
+      "date": "2024-11-04",
+      "classification": [
+        "약한 조정",
+        "이평 근처 눌림",
+        "상위 추세 유지"
+      ],
+      "buyable_score": 60.0,
+      "result_score": 97.5,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 50,
+        "trend": 5,
+        "quality": 20,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 68.81,
+        "close20": 26.89,
+        "dd10": -0.84
+      },
+      "extension_details": {
+        "dist20": -3.57,
+        "dist60": -3.6,
+        "dist120": -4.32,
+        "rsi14": 46.32,
+        "ret14": -2.24
+      }
+    },
+    {
+      "ticker": "272210",
+      "name": "한화시스템",
+      "market": "KR",
+      "date": "2024-12-10",
+      "classification": [
+        "과매도 급락",
+        "낙폭과대 반전 후보",
+        "주봉 강세 속 흔들림"
+      ],
+      "buyable_score": 45.0,
+      "result_score": 91.5,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 25,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 27.0,
+        "close20": 17.48,
+        "dd10": -1.5
+      },
+      "extension_details": {
+        "dist20": -18.77,
+        "dist60": -4.57,
+        "dist120": -0.26,
+        "rsi14": 15.6,
+        "ret14": -29.35
+      }
+    },
+    {
+      "ticker": "272210",
+      "name": "한화시스템",
+      "market": "KR",
+      "date": "2025-12-02",
+      "classification": [
+        "급락 저점 탐색",
+        "약세 심화",
+        "반전 대기"
+      ],
+      "buyable_score": 0.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 0,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 36.55,
+        "close20": 21.41,
+        "dd10": 0.33
+      },
+      "extension_details": {
+        "dist20": -9.24,
+        "dist60": -16.09,
+        "dist120": -17.34,
+        "rsi14": 14.89,
+        "ret14": -15.33
+      }
+    },
+    {
+      "ticker": "272210",
+      "name": "한화시스템",
+      "market": "KR",
+      "date": "2025-12-30",
+      "classification": [
+        "회복 안착",
+        "이평 재돌파",
+        "재상승 준비"
+      ],
+      "buyable_score": 70.0,
+      "result_score": 100.0,
+      "extension_risk_score": 7.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 50,
+        "trend": 5,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 82.54,
+        "close20": 70.59,
+        "dd10": 0.0
+      },
+      "extension_details": {
+        "dist20": 6.31,
+        "dist60": 3.13,
+        "dist120": 1.02,
+        "rsi14": 61.52,
+        "ret14": 12.51
+      }
+    },
+    {
+      "ticker": "298040",
+      "name": "효성중공업",
+      "market": "KR",
+      "date": "2020-05-25",
+      "classification": [
+        "눌림 후 재가속",
+        "완만한 조정",
+        "상승 재개"
+      ],
+      "buyable_score": 65.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 35,
+        "trend": 10,
+        "quality": 20,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 73.55,
+        "close20": 55.16,
+        "dd10": 0.0
+      },
+      "extension_details": {
+        "dist20": -3.41,
+        "dist60": 0.76,
+        "dist120": -23.03,
+        "rsi14": 38.74,
+        "ret14": -7.46
+      }
+    },
+    {
+      "ticker": "298040",
+      "name": "효성중공업",
+      "market": "KR",
+      "date": "2023-03-27",
+      "classification": [
+        "조정 후 반등",
+        "과매도 완화",
+        "회복형"
+      ],
+      "buyable_score": 15.0,
+      "result_score": 91.3,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 20,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 23.48,
+        "close20": 15.85,
+        "dd10": 0.0
+      },
+      "extension_details": {
+        "dist20": -7.77,
+        "dist60": -7.31,
+        "dist120": -7.08,
+        "rsi14": 16.05,
+        "ret14": -14.36
+      }
+    },
+    {
+      "ticker": "298040",
+      "name": "효성중공업",
+      "market": "KR",
+      "date": "2023-05-19",
+      "classification": [
+        "20선 눌림",
+        "추세 유지",
+        "재상승 후보"
+      ],
+      "buyable_score": 90.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 60,
+        "trend": 15,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 38.89,
+        "close20": 30.29,
+        "dd10": 0.66
+      },
+      "extension_details": {
+        "dist20": -4.55,
+        "dist60": 2.26,
+        "dist120": 1.45,
+        "rsi14": 40.38,
+        "ret14": -3.82
+      }
+    },
+    {
+      "ticker": "298040",
+      "name": "효성중공업",
+      "market": "KR",
+      "date": "2024-08-05",
+      "classification": [
+        "급락 바닥권",
+        "과매도",
+        "되돌림 회복"
+      ],
+      "buyable_score": 5.0,
+      "result_score": 97.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 10,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 38.89,
+        "close20": 13.49,
+        "dd10": 1.59
+      },
+      "extension_details": {
+        "dist20": -26.76,
+        "dist60": -30.82,
+        "dist120": -18.42,
+        "rsi14": 22.88,
+        "ret14": -35.88
+      }
+    },
+    {
+      "ticker": "298040",
+      "name": "효성중공업",
+      "market": "KR",
+      "date": "2025-04-09",
+      "classification": [
+        "급락 후 반전",
+        "과매도",
+        "강한 회복 출발점"
+      ],
+      "buyable_score": 5.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 10,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 41.7,
+        "close20": 37.78,
+        "dd10": 8.76
+      },
+      "extension_details": {
+        "dist20": -12.85,
+        "dist60": -16.41,
+        "dist120": -13.1,
+        "rsi14": 27.32,
+        "ret14": -17.39
+      }
+    },
+    {
+      "ticker": "298040",
+      "name": "효성중공업",
+      "market": "KR",
+      "date": "2025-04-24",
+      "classification": [
+        "눌림 후 재가속",
+        "20선 재안착",
+        "확장 직전"
+      ],
+      "buyable_score": 70.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 40,
+        "trend": 10,
+        "quality": 20,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 40.25,
+        "close20": 38.88,
+        "dd10": 1.94
+      },
+      "extension_details": {
+        "dist20": 0.52,
+        "dist60": -4.07,
+        "dist120": -1.55,
+        "rsi14": 51.55,
+        "ret14": 1.62
+      }
+    },
+    {
+      "ticker": "329180",
+      "name": "HD현대중공업",
+      "market": "KR",
+      "date": "2024-06-12",
+      "classification": [
+        "눌림 후 재가속",
+        "이평 근처 조정",
+        "확장 직전"
+      ],
+      "buyable_score": 80.0,
+      "result_score": 86.1,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 40,
+        "trend": 25,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 22.85,
+        "close20": 19.46,
+        "dd10": -1.46
+      },
+      "extension_details": {
+        "dist20": -1.34,
+        "dist60": 1.93,
+        "dist120": 6.32,
+        "rsi14": 52.26,
+        "ret14": 0.7
+      }
+    },
+    {
+      "ticker": "329180",
+      "name": "HD현대중공업",
+      "market": "KR",
+      "date": "2024-11-05",
+      "classification": [
+        "급락 후 반등",
+        "과매도 완화",
+        "반전 시도"
+      ],
+      "buyable_score": 30.0,
+      "result_score": 95.1,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 25,
+        "trend": 10,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 42.4,
+        "close20": 24.05,
+        "dd10": -1.63
+      },
+      "extension_details": {
+        "dist20": -8.63,
+        "dist60": -10.31,
+        "dist120": 0.1,
+        "rsi14": 24.32,
+        "ret14": -11.72
+      }
+    },
+    {
+      "ticker": "329180",
+      "name": "HD현대중공업",
+      "market": "KR",
+      "date": "2024-12-09",
+      "classification": [
+        "눌림 후 회복",
+        "60선 위 유지",
+        "재확장 후보"
+      ],
+      "buyable_score": 55.0,
+      "result_score": 100.0,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 10,
+        "trend": 30,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 47.84,
+        "close20": 44.95,
+        "dd10": 0.72
+      },
+      "extension_details": {
+        "dist20": -5.61,
+        "dist60": 4.31,
+        "dist120": 10.34,
+        "rsi14": 40.35,
+        "ret14": -7.35
+      }
+    },
+    {
+      "ticker": "402340",
+      "name": "SK스퀘어",
+      "market": "KR",
+      "date": "2023-09-12",
+      "classification": [
+        "조정 후 반등",
+        "과매도 완화",
+        "회복 후보"
+      ],
+      "buyable_score": 5.0,
+      "result_score": 60.4,
+      "extension_risk_score": 0.0,
+      "result_label": "ok",
+      "buyable_details": {
+        "support": 0,
+        "trend": 10,
+        "quality": 10,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 11.51,
+        "close20": 10.89,
+        "dd10": -2.23
+      },
+      "extension_details": {
+        "dist20": -7.49,
+        "dist60": -9.87,
+        "dist120": -7.15,
+        "rsi14": 35.75,
+        "ret14": -6.81
+      }
+    },
+    {
+      "ticker": "402340",
+      "name": "SK스퀘어",
+      "market": "KR",
+      "date": "2024-01-17",
+      "classification": [
+        "눌림 회복형",
+        "20선 아래 조정",
+        "재상승 후보"
+      ],
+      "buyable_score": 75.0,
+      "result_score": 99.4,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 50,
+        "trend": 25,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 42.8,
+        "close20": 39.81,
+        "dd10": -0.21
+      },
+      "extension_details": {
+        "dist20": -5.36,
+        "dist60": -2.84,
+        "dist120": 1.79,
+        "rsi14": 38.55,
+        "ret14": -6.02
+      }
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "market": "US",
+      "date": "2020-03-18",
+      "classification": [
+        "급락 바닥권",
+        "투매 후 회복",
+        "반전 초입"
+      ],
+      "buyable_score": 20.0,
+      "result_score": 86.1,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 20,
+        "quality": 15,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 47.42,
+        "close20": 45.3,
+        "dd10": -4.65
+      },
+      "extension_details": {
+        "dist20": -20.79,
+        "dist60": -19.63,
+        "dist120": -10.91,
+        "rsi14": 40.31,
+        "ret14": -19.71
+      }
+    },
+    {
+      "ticker": "NVDA",
+      "name": "NVIDIA",
+      "market": "US",
+      "date": "2022-12-16",
+      "classification": [
+        "중기 회복 후 눌림",
+        "20선 근접",
+        "재상승 후보"
+      ],
+      "buyable_score": 50.0,
+      "result_score": 20.2,
+      "extension_risk_score": 9.8,
+      "result_label": "bad",
+      "buyable_details": {
+        "support": 15,
+        "trend": 20,
+        "quality": 15,
+        "penalty": 0
+      },
+      "result_details": {
+        "peak20": 7.86,
+        "close20": 4.86,
+        "dd10": -16.22
+      },
+      "extension_details": {
+        "dist20": -0.07,
+        "dist60": 15.42,
+        "dist120": 8.68,
+        "rsi14": 55.51,
+        "ret14": 4.7
+      }
+    },
+    {
+      "ticker": "TSLA",
+      "name": "Tesla",
+      "market": "US",
+      "date": "2020-03-18",
+      "classification": [
+        "급락 바닥권",
+        "극단적 과매도",
+        "반전 초입"
+      ],
+      "buyable_score": 15.0,
+      "result_score": 97.7,
+      "extension_risk_score": 0.0,
+      "result_label": "good",
+      "buyable_details": {
+        "support": 0,
+        "trend": 25,
+        "quality": 5,
+        "penalty": 15
+      },
+      "result_details": {
+        "peak20": 110.25,
+        "close20": 106.3,
+        "dd10": -0.76
+      },
+      "extension_details": {
+        "dist20": -46.32,
+        "dist60": -41.57,
+        "dist120": -22.18,
+        "rsi14": 21.39,
+        "ret14": -46.8
+      }
+    }
+  ]
+}

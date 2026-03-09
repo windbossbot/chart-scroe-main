@@ -1,0 +1,183 @@
+//@version=6
+indicator("KGW Trend Template v1", shorttitle="KGW Template v1", overlay=true, max_labels_count=500)
+
+// Core lengths
+maShortLen = input.int(20, "Daily MA 1", minval=1)
+maMidLen = input.int(60, "Daily MA 2", minval=1)
+maLongLen = input.int(120, "Daily MA 3", minval=1)
+maAnchorLen = input.int(240, "Daily MA 4", minval=1)
+
+// Higher timeframe lengths
+weekLen = input.int(20, "Weekly MA", minval=1)
+monthLen = input.int(20, "Monthly MA", minval=1)
+
+// Score bands
+dist20BuyMin = input.float(-8.0, "Buy band dist20 min", step=0.1)
+dist20BuyMax = input.float(-2.0, "Buy band dist20 max", step=0.1)
+dist60BuyMin = input.float(0.0, "Buy band dist60 min", step=0.1)
+dist60BuyMax = input.float(6.0, "Buy band dist60 max", step=0.1)
+fearDist20Max = input.float(-5.0, "Fear trigger dist20", step=0.1)
+extDist20Min = input.float(5.0, "Extension trigger dist20", step=0.1)
+extDist60Min = input.float(10.0, "Extension trigger dist60", step=0.1)
+extDist120Min = input.float(15.0, "Extension trigger dist120", step=0.1)
+
+showPanel = input.bool(true, "Show score panel")
+showSignals = input.bool(true, "Show labels")
+
+// Daily moving averages
+ma20 = ta.sma(close, maShortLen)
+ma60 = ta.sma(close, maMidLen)
+ma120 = ta.sma(close, maLongLen)
+ma240 = ta.sma(close, maAnchorLen)
+
+// Higher timeframe context
+wClose = request.security(syminfo.tickerid, "W", close)
+wMA = request.security(syminfo.tickerid, "W", ta.sma(close, weekLen))
+mClose = request.security(syminfo.tickerid, "M", close)
+mMA = request.security(syminfo.tickerid, "M", ta.sma(close, monthLen))
+
+// Distances
+dist20 = (close / ma20 - 1.0) * 100.0
+dist60 = (close / ma60 - 1.0) * 100.0
+dist120 = (close / ma120 - 1.0) * 100.0
+dist240 = (close / ma240 - 1.0) * 100.0
+
+// Slopes
+ma20Slope5 = ma20 - ma20[5]
+ma60Slope5 = ma60 - ma60[5]
+ma120Slope5 = ma120 - ma120[5]
+ma240Slope5 = ma240 - ma240[5]
+
+// Context metrics
+rsi14 = ta.rsi(close, 14)
+atrPct = ta.atr(14) / close * 100.0
+vr20 = volume / ta.sma(volume, 20)
+ret14 = (close / close[14] - 1.0) * 100.0
+runup30 = (close / close[30] - 1.0) * 100.0
+hh20 = ta.highest(high, 20)[1]
+fromHH20 = (close / hh20 - 1.0) * 100.0
+boxHigh = ta.highest(high, 20)[1]
+boxLow = ta.lowest(low, 20)[1]
+boxRangePct = (boxHigh - boxLow) / close * 100.0
+maGap2060 = math.abs(ma20 - ma60) / close * 100.0
+
+inRange(v, lo, hi) =>
+    v >= lo and v <= hi
+
+// Trend template style checks
+trendTemplate =
+     close > ma60 and
+     close > ma120 and
+     ma20 > ma60 and
+     ma60 > ma120 and
+     ma20Slope5 > 0 and
+     ma60Slope5 > 0 and
+     wClose > wMA and
+     mClose > mMA
+
+anchorTrend = ma120 > ma240 or ma240Slope5 > 0
+
+// Score groups
+buyableScore = 0.0
+buyableScore += wClose > wMA ? 18 : 0
+buyableScore += mClose > mMA ? 8 : 0
+buyableScore += close > ma60 ? 20 : 0
+buyableScore += inRange(dist20, dist20BuyMin, dist20BuyMax) ? 20 : 0
+buyableScore += inRange(dist60, dist60BuyMin, dist60BuyMax) ? 10 : 0
+buyableScore += inRange(rsi14, 35, 52) ? 10 : 0
+buyableScore += vr20 <= 1.3 ? 8 : 0
+buyableScore += inRange(boxRangePct, 8, 35) ? 8 : 0
+buyableScore += anchorTrend ? 6 : 0
+buyableScore -= close < ma60 ? 20 : 0
+buyableScore -= dist120 > 20 ? 12 : 0
+buyableScore -= runup30 < 0 ? 10 : 0
+buyableScore := math.max(0, math.min(100, buyableScore))
+
+turningScore = 0.0
+turningScore += close > ma60 ? 20 : 0
+turningScore += wClose > wMA ? 15 : 0
+turningScore += mClose > mMA ? 15 : 0
+turningScore += inRange(fromHH20, -12, -3) ? 15 : 0
+turningScore += rsi14 >= 38 ? 10 : 0
+turningScore += ma60Slope5 > 0 ? 10 : 0
+turningScore += ma120Slope5 > 0 ? 10 : 0
+turningScore += inRange(runup30, 5, 60) ? 10 : 0
+turningScore -= close < ma120 ? 20 : 0
+turningScore -= ret14 < -12 ? 15 : 0
+turningScore := math.max(0, math.min(100, turningScore))
+
+extensionRisk = 0.0
+extensionRisk += math.max(0, math.min(30, (dist20 - extDist20Min) * 3))
+extensionRisk += math.max(0, math.min(25, (dist60 - extDist60Min) * 1.5))
+extensionRisk += math.max(0, math.min(20, (dist120 - extDist120Min) * 1.2))
+extensionRisk += math.max(0, math.min(15, (rsi14 - 60) * 1.8))
+extensionRisk += math.max(0, math.min(10, (ret14 - 15) * 1.2))
+extensionRisk := math.max(0, math.min(100, extensionRisk))
+
+fearScore = 0.0
+fearScore += dist20 <= fearDist20Max ? 30 : 0
+fearScore += math.abs(dist60) <= 4 ? 20 : 0
+fearScore += math.abs(dist120) <= 5 ? 15 : 0
+fearScore += rsi14 <= 40 ? 15 : 0
+fearScore += fromHH20 <= -10 ? 10 : 0
+fearScore += ret14 <= -8 ? 10 : 0
+fearScore := math.max(0, math.min(100, fearScore))
+
+// Practical labels
+isPullbackCandidate = buyableScore >= 70 and turningScore >= 60 and extensionRisk < 55
+isFearCandidate = fearScore >= 60 and close > ma60
+isOverextended = extensionRisk >= 55
+isWeak = close < ma60 or (close < ma120 and ret14 < -12)
+
+// Plots
+plot(ma20, "MA20", color=color.new(color.aqua, 0), linewidth=2)
+plot(ma60, "MA60", color=color.new(color.orange, 0), linewidth=2)
+plot(ma120, "MA120", color=color.new(color.lime, 0), linewidth=2)
+plot(ma240, "MA240", color=color.new(color.fuchsia, 0), linewidth=2)
+
+bgcolor(isOverextended ? color.new(color.red, 88) : na)
+bgcolor(isPullbackCandidate ? color.new(color.teal, 88) : na)
+bgcolor(isFearCandidate ? color.new(color.yellow, 86) : na)
+
+plotshape(showSignals and isPullbackCandidate, title="Pullback candidate", style=shape.triangleup, location=location.belowbar, color=color.new(color.teal, 0), size=size.tiny, text="PB")
+plotshape(showSignals and isFearCandidate, title="Fear candidate", style=shape.circle, location=location.belowbar, color=color.new(color.yellow, 0), size=size.tiny, text="FR")
+plotshape(showSignals and isOverextended, title="Overextended", style=shape.triangledown, location=location.abovebar, color=color.new(color.red, 0), size=size.tiny, text="EXT")
+
+var table panel = table.new(position.top_right, 2, 14, border_width=1)
+if barstate.islast and showPanel
+    table.cell(panel, 0, 0, "KGW Template", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 1, 0, trendTemplate ? "PASS" : "FAIL", text_color=trendTemplate ? color.lime : color.red, bgcolor=color.new(color.black, 0))
+
+    table.cell(panel, 0, 1, "Buyable", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 1, 1, str.tostring(buyableScore, "#.0"), text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 0, 2, "Turning", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 1, 2, str.tostring(turningScore, "#.0"), text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 0, 3, "Extension", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 1, 3, str.tostring(extensionRisk, "#.0"), text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 0, 4, "Fear", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 1, 4, str.tostring(fearScore, "#.0"), text_color=color.white, bgcolor=color.new(color.black, 0))
+
+    table.cell(panel, 0, 5, "Dist20", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 1, 5, str.tostring(dist20, "#.00") + "%", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 0, 6, "Dist60", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 1, 6, str.tostring(dist60, "#.00") + "%", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 0, 7, "Dist120", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 1, 7, str.tostring(dist120, "#.00") + "%", text_color=color.white, bgcolor=color.new(color.black, 0))
+
+    table.cell(panel, 0, 8, "W > WMA", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 1, 8, wClose > wMA ? "YES" : "NO", text_color=wClose > wMA ? color.lime : color.red, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 0, 9, "M > MMA", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 1, 9, mClose > mMA ? "YES" : "NO", text_color=mClose > mMA ? color.lime : color.red, bgcolor=color.new(color.black, 0))
+
+    table.cell(panel, 0, 10, "Runup30", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 1, 10, str.tostring(runup30, "#.00") + "%", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 0, 11, "FromHH20", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 1, 11, str.tostring(fromHH20, "#.00") + "%", text_color=color.white, bgcolor=color.new(color.black, 0))
+
+    stateText = isWeak ? "Weak/avoid" : isOverextended ? "Extended" : isFearCandidate ? "Fear setup" : isPullbackCandidate ? "Pullback setup" : "Neutral"
+    stateColor = isWeak ? color.red : isOverextended ? color.orange : isFearCandidate ? color.yellow : isPullbackCandidate ? color.lime : color.silver
+    table.cell(panel, 0, 12, "State", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 1, 12, stateText, text_color=stateColor, bgcolor=color.new(color.black, 0))
+
+    table.cell(panel, 0, 13, "ATR%", text_color=color.white, bgcolor=color.new(color.black, 0))
+    table.cell(panel, 1, 13, str.tostring(atrPct, "#.00") + "%", text_color=color.white, bgcolor=color.new(color.black, 0))
