@@ -217,6 +217,18 @@ def safe_float(value, default: float = 0.0) -> float:
         return default
 
 
+def parse_number_text(value: str | None) -> float:
+    if value is None:
+        return 0.0
+    text = str(value).strip().replace(",", "").replace("%", "").replace("배", "").replace("원", "")
+    if text in {"", "-", "N/A"}:
+        return 0.0
+    try:
+        return float(text)
+    except Exception:
+        return 0.0
+
+
 @st.cache_data(show_spinner=False, ttl=3600)
 def fetch_reference_ohlcv(symbol: str, end_date: str | None = None) -> pd.DataFrame:
     start = "2020-01-01"
@@ -260,19 +272,59 @@ def score_reference_strength(row: pd.Series) -> tuple[float, list[str]]:
 
 @st.cache_data(show_spinner=False, ttl=3600)
 def fetch_kr_latest_fundamentals(ticker: str, end_date: str | None) -> dict:
-    date = end_date or get_latest_kr_trading_date()
-    df = stock.get_market_fundamental_by_date(date, date, ticker)
-    if df is None or df.empty:
-        return {}
-    row = df.iloc[-1]
-    return {
-        "BPS": safe_float(row.get("BPS")),
-        "PER": safe_float(row.get("PER")),
-        "PBR": safe_float(row.get("PBR")),
-        "EPS": safe_float(row.get("EPS")),
-        "DIV": safe_float(row.get("DIV")),
-        "DPS": safe_float(row.get("DPS")),
-    }
+    base_date = end_date or get_latest_kr_trading_date()
+    base_dt = pd.to_datetime(base_date, format="%Y%m%d", errors="coerce")
+    if pd.isna(base_dt):
+        base_dt = pd.Timestamp.now()
+
+    for offset in range(0, 15):
+        dt = (base_dt - pd.Timedelta(days=offset)).strftime("%Y%m%d")
+        try:
+            df = stock.get_market_fundamental_by_date(dt, dt, ticker)
+        except Exception:
+            continue
+        if df is None or df.empty:
+            continue
+        row = df.iloc[-1]
+        return {
+            "source": "pykrx",
+            "date": dt,
+            "BPS": safe_float(row.get("BPS")),
+            "PER": safe_float(row.get("PER")),
+            "PBR": safe_float(row.get("PBR")),
+            "EPS": safe_float(row.get("EPS")),
+            "DIV": safe_float(row.get("DIV")),
+            "DPS": safe_float(row.get("DPS")),
+        }
+
+    try:
+        url = f"https://finance.naver.com/item/main.naver?code={ticker}"
+        html = requests.get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=15).text
+        import re
+
+        def extract(metric_id: str) -> float:
+            match = re.search(rf'id="{metric_id}">(.*?)</em>', html)
+            return parse_number_text(match.group(1) if match else None)
+
+        per = extract("_per")
+        eps = extract("_eps")
+        pbr = extract("_pbr")
+        div = extract("_dvr")
+        if any(v > 0 for v in [per, eps, pbr, div]):
+            return {
+                "source": "naver",
+                "date": "-",
+                "BPS": 0.0,
+                "PER": per,
+                "PBR": pbr,
+                "EPS": eps,
+                "DIV": div,
+                "DPS": 0.0,
+            }
+    except Exception:
+        pass
+
+    return {"source": "-", "date": "-"}
 
 
 @st.cache_data(show_spinner=False, ttl=3600)
@@ -326,6 +378,8 @@ def build_support_context(asset_type: str, ticker: str, payload: dict, end_date:
             details.extend([f"시장: {note}" for note in notes])
 
         fundamentals = fetch_kr_latest_fundamentals(ticker, end_date)
+        f_date = str(fundamentals.get("date", "-"))
+        f_source = str(fundamentals.get("source", "-"))
         per = safe_float(fundamentals.get("PER"), default=-1)
         pbr = safe_float(fundamentals.get("PBR"), default=-1)
         eps = safe_float(fundamentals.get("EPS"))
@@ -346,6 +400,8 @@ def build_support_context(asset_type: str, ticker: str, payload: dict, end_date:
 
         fundamental_rows = [
             {"항목": "시장구분", "값": segment},
+            {"항목": "펀더 출처", "값": f_source},
+            {"항목": "펀더 기준일", "값": f_date},
             {"항목": "PER", "값": "-" if per <= 0 else f"{per:.2f}"},
             {"항목": "PBR", "값": "-" if pbr <= 0 else f"{pbr:.2f}"},
             {"항목": "EPS", "값": "-" if eps == 0 else f"{eps:,.0f}"},
@@ -603,7 +659,7 @@ def main() -> None:
     st.set_page_config(page_title="Dividend Chart Score", layout="wide")
     st.title("Dividend Chart Score")
     st.caption("티커 1개 입력 -> 현재 자리 점수 평가")
-    latest_trading_date = get_latest_kr_trading_date()
+    today_date = datetime.now().strftime("%Y%m%d")
 
     with st.form("score_form"):
         col0, col1, col2 = st.columns([0.8, 1.2, 1])
@@ -613,7 +669,7 @@ def main() -> None:
             default_ticker = "005930" if asset_type == "KR" else ("NVDA" if asset_type == "US" else "BTC")
             ticker = st.text_input("티커", value=default_ticker, max_chars=20)
         with col2:
-            end_date = st.text_input("기준일(YYYYMMDD)", value=latest_trading_date, disabled=asset_type == "CRYPTO")
+            end_date = st.text_input("기준일(YYYYMMDD)", value=today_date, disabled=asset_type == "CRYPTO")
         submitted = st.form_submit_button("평가", type="primary")
 
     if not submitted:
@@ -640,7 +696,19 @@ def main() -> None:
     st.subheader(f"{payload['name']} ({payload['ticker']})")
     st.caption(f"기준일: {payload['date']}")
 
-    m1, m2, m3, m4, m5 = st.columns(5)
+    total_score = round(
+        clamp(
+            scores["buyable_score"] * 0.5
+            + scores["turning_score"] * 0.2
+            + (100 - scores["extension_risk_score"]) * 0.15
+            + (100 - scores["fear_score"]) * 0.05
+            + support["support_score"] * 0.1
+        ),
+        1,
+    )
+
+    m0, m1, m2, m3, m4, m5 = st.columns(6)
+    m0.metric("총점", f"{total_score:.1f}")
     m1.metric("사고 싶은 자리", f"{scores['buyable_score']:.1f}")
     m2.metric("전환 가능성", f"{scores['turning_score']:.1f}")
     m3.metric("과열 부담", f"{scores['extension_risk_score']:.1f}")
@@ -703,19 +771,6 @@ def main() -> None:
 
     st.info(build_comment(scores, daily))
 
-    case_scores = load_case_scores()
-    if case_scores.empty:
-        return
-    same = case_scores[case_scores["ticker"].astype(str) == payload["ticker"]].copy()
-    if not same.empty:
-        same = same.sort_values(["buyable_score", "result_score"], ascending=[False, False])
-        st.markdown("#### 저장된 과거 사례")
-        st.dataframe(
-            same[["date", "classification", "buyable_score", "result_score", "extension_risk_score", "result_label"]],
-            use_container_width=True,
-            hide_index=True,
-        )
-
     st.markdown("#### 보조 지표 / 환경 점수")
     s1, s2, s3 = st.columns(3)
     s1.metric("시장/지수 보정", f"{support['market_score']:.1f} / 8")
@@ -735,31 +790,20 @@ def main() -> None:
             st.markdown("**펀더멘털/배당 지표**")
             st.dataframe(pd.DataFrame(support["fundamental_rows"]), use_container_width=True, hide_index=True)
 
-    with st.expander("직접 입력 참고 지표"):
-        st.caption("자동점수와 별개로, 실적/배당 같은 참고값을 직접 적어두는 칸입니다.")
-        i1, i2, i3, i4 = st.columns(4)
-        with i1:
-            manual_eps = st.number_input("EPS", value=0.0, step=1.0, format="%.2f")
-        with i2:
-            manual_per = st.number_input("PER", value=0.0, step=0.1, format="%.2f")
-        with i3:
-            manual_pbr = st.number_input("PBR", value=0.0, step=0.1, format="%.2f")
-        with i4:
-            manual_div = st.number_input("배당수익률(%)", value=0.0, step=0.1, format="%.2f")
-        manual_note = st.text_input("메모", value="")
-        st.dataframe(
-            pd.DataFrame(
-                [
-                    {"항목": "EPS 직접입력", "값": "-" if manual_eps == 0 else f"{manual_eps:,.2f}"},
-                    {"항목": "PER 직접입력", "값": "-" if manual_per == 0 else f"{manual_per:.2f}"},
-                    {"항목": "PBR 직접입력", "값": "-" if manual_pbr == 0 else f"{manual_pbr:.2f}"},
-                    {"항목": "배당수익률 직접입력", "값": "-" if manual_div == 0 else f"{manual_div:.2f}%"},
-                    {"항목": "메모", "값": manual_note or "-"},
-                ]
-            ),
-            use_container_width=True,
-            hide_index=True,
-        )
+    if asset_type == "KR":
+        st.caption("국장 펀더멘털은 현재 기본 소스 응답이 불안정해 참고용으로만 표시합니다. 필요하면 다른 소스로 교체할 수 있습니다.")
+
+    case_scores = load_case_scores()
+    if not case_scores.empty:
+        same = case_scores[case_scores["ticker"].astype(str) == payload["ticker"]].copy()
+        if not same.empty:
+            same = same.sort_values(["buyable_score", "result_score"], ascending=[False, False])
+            st.markdown("#### 저장된 과거 사례")
+            st.dataframe(
+                same[["date", "classification", "buyable_score", "result_score", "extension_risk_score", "result_label"]],
+                use_container_width=True,
+                hide_index=True,
+            )
 
 
 if __name__ == "__main__":
