@@ -1,11 +1,11 @@
 # Session Recovery
 
-- workspace: `C:\Users\KGWPC\workspace\dividend-chart-score`
+- workspace: `C:\Users\KGWPC\workspace\chart scroe main`
 - render url: `https://dividend-chart-score.onrender.com/`
-- local chart app: `C:\Users\KGWPC\workspace\dividend-chart-score\chart_score_app.py`
-- render entry: `C:\Users\KGWPC\workspace\dividend-chart-score\render.yaml`
+- local chart app: `C:\Users\KGWPC\workspace\chart scroe main\chart_score_app.py`
+- render entry: `C:\Users\KGWPC\workspace\chart scroe main\render.yaml`
 - keep cache: `_cache/*`
-- venv python: `C:\Users\KGWPC\workspace\dividend-chart-score\.venv\Scripts\python.exe`
+- venv python: `C:\Users\KGWPC\workspace\chart scroe main\.venv\Scripts\python.exe`
 - current branch: `codex/chart-score-migrate`
 - latest focus date: `2026-03-11`
 
@@ -52,6 +52,16 @@
   - `결과 안 좋은 자리` 자동 감점
   - `매도 자리` 규칙화
   - `급등 전조 점수` 검증
+
+## Current Operating Focus
+
+- 기준 저장소는 이제 `C:\Users\KGWPC\workspace\chart scroe main` 이다.
+- 현재 운영 기준은 `중기` 우선이다.
+- `단기`, `장기`는 따로 저장해두고 참고용으로 본다.
+- 중기 해석:
+  - 매수: `60 / 120` 중심
+  - 매도: `120일선 이탈`
+  - 대략적 보유 기간: `40 ~ 120 거래일`
 
 ## Current App Architecture
 
