@@ -129,13 +129,28 @@ def add_indicators(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def score_position(daily: pd.Series, weekly: pd.Series, monthly: pd.Series) -> dict:
+    regime = "중간"
+    if monthly["close"] > monthly["ma5"] and weekly["close"] > weekly["ma60"] and daily["ma20"] > daily["ma60"]:
+        regime = "강세"
+    elif monthly["close"] < monthly["ma5"] or daily["close"] < daily["ma120"]:
+        regime = "약세"
+
     daily_buyable = 0.0
-    daily_buyable += 18 if -4.5 <= daily["dist20"] <= 1.5 else 0
-    daily_buyable += 22 if -2.5 <= daily["dist60"] <= 3.5 else 0
-    daily_buyable += 10 if -2.5 <= daily["dist120"] <= 5.5 else 0
-    daily_buyable += 6 if -3 <= daily["dist240"] <= 6 else 0
-    daily_buyable += 10 if -3 <= daily["dist480"] <= 8 else 0
-    daily_buyable += 12 if -9 <= daily["dist20"] <= -2 and daily["close"] > daily["ma60"] else 0
+    if regime == "강세":
+        daily_buyable += 22 if -4.5 <= daily["dist20"] <= 1.5 else 0
+        daily_buyable += 20 if -2.5 <= daily["dist60"] <= 3.5 else 0
+        daily_buyable += 6 if -2.5 <= daily["dist120"] <= 5.5 else 0
+        daily_buyable += 10 if -9 <= daily["dist20"] <= -2 and daily["close"] > daily["ma60"] else 0
+    elif regime == "중간":
+        daily_buyable += 12 if -4.5 <= daily["dist20"] <= 1.5 else 0
+        daily_buyable += 22 if -2.5 <= daily["dist60"] <= 3.5 else 0
+        daily_buyable += 16 if -2.5 <= daily["dist120"] <= 5.5 else 0
+        daily_buyable += 10 if -8 <= daily["dist20"] <= -2 and daily["close"] > daily["ma60"] else 0
+    else:
+        daily_buyable += 6 if -2.5 <= daily["dist120"] <= 5.5 else 0
+        daily_buyable += 10 if -3 <= daily["dist240"] <= 6 else 0
+        daily_buyable += 16 if -3 <= daily["dist480"] <= 8 else 0
+
     daily_buyable += 8 if 34 <= daily["rsi14"] <= 56 else 0
     daily_buyable += 8 if daily["vr20"] <= 1.0 else 0
     daily_buyable += 4 if 1.0 < daily["vr20"] <= 1.2 else 0
@@ -246,6 +261,7 @@ def score_position(daily: pd.Series, weekly: pd.Series, monthly: pd.Series) -> d
         breakout_notes.append("20일선 과열 이격")
 
     return {
+        "regime_label": regime,
         "buyable_score": round(clamp(buyable), 1),
         "turning_score": round(clamp(turning), 1),
         "extension_risk_score": round(clamp(extension), 1),
@@ -809,6 +825,7 @@ def main() -> None:
     m6.metric("급등 전조", f"{scores['breakout_setup_score']:.1f}")
 
     with st.expander("점수 분해"):
+        st.caption(f"현재 상태 분류: {scores.get('regime_label', '-')}")
         d1, d2, d3 = st.columns(3)
         with d1:
             st.markdown(
