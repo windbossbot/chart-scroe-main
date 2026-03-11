@@ -320,8 +320,70 @@ def classify_trade_horizon(daily: pd.Series, weekly: pd.Series, monthly: pd.Seri
     }
 
 
-def build_comment(scores: dict, daily: pd.Series) -> str:
+def get_trade_plan(profile: dict) -> dict:
+    trade_type = profile.get("trade_horizon", "중기")
+    if trade_type == "단기":
+        return {
+            "trade_horizon": trade_type,
+            "entry_threshold": 75.0,
+            "priority": "참고",
+            "holding_window": "5~30 거래일",
+            "exit_rule": "5일선 1차, 20일선 2차, 60일선 정리",
+        }
+    if trade_type == "장기":
+        return {
+            "trade_horizon": trade_type,
+            "entry_threshold": 55.0,
+            "priority": "참고",
+            "holding_window": "60~240 거래일",
+            "exit_rule": "240/480 이탈 중심",
+        }
+    return {
+        "trade_horizon": trade_type,
+        "entry_threshold": 65.0,
+        "priority": "메인",
+        "holding_window": "40~120 거래일",
+        "exit_rule": "120일선 이탈",
+    }
+
+
+def compute_operating_score(scores: dict, support: dict, plan: dict) -> float:
+    trade_type = plan.get("trade_horizon", "중기")
+    if trade_type == "단기":
+        value = (
+            scores["buyable_score"] * 0.42
+            + scores["breakout_setup_score"] * 0.23
+            + scores["turning_score"] * 0.12
+            + (100 - scores["extension_risk_score"]) * 0.13
+            + (100 - scores["fear_score"]) * 0.05
+            + support["support_score"] * 0.05
+        )
+    elif trade_type == "장기":
+        value = (
+            scores["buyable_score"] * 0.52
+            + scores["turning_score"] * 0.16
+            + (100 - scores["fear_score"]) * 0.12
+            + (100 - scores["extension_risk_score"]) * 0.08
+            + support["support_score"] * 0.12
+        )
+    else:
+        value = (
+            scores["buyable_score"] * 0.58
+            + scores["turning_score"] * 0.18
+            + (100 - scores["extension_risk_score"]) * 0.1
+            + (100 - scores["fear_score"]) * 0.08
+            + support["support_score"] * 0.06
+        )
+
+    threshold_gap = scores["buyable_score"] - plan.get("entry_threshold", 65.0)
+    value += clamp(threshold_gap * 0.8, -10, 10)
+    return round(clamp(value), 1)
+
+
+def build_comment(scores: dict, daily: pd.Series, profile: dict, plan: dict) -> str:
     tone = []
+    trade_type = profile.get("trade_horizon", "중기")
+    threshold = plan.get("entry_threshold", 65.0)
 
     if daily["close"] >= daily["ma20"] and daily["close"] >= daily["ma60"]:
         tone.append("단기와 중기 이평이 아래에서 받쳐주는 구조라 매매 근거는 비교적 선명합니다.")
@@ -332,15 +394,23 @@ def build_comment(scores: dict, daily: pd.Series) -> str:
     else:
         tone.append("20일선과 60일선이 모두 위에 있어 이평이 지지보다 저항처럼 느껴질 수 있습니다.")
 
-    if scores["extension_risk_score"] >= 70:
+    if scores["buyable_score"] >= threshold + 10 and trade_type == "중기":
+        tone.append("중기 기준선보다 한 단계 위라, 60/120 지지 확인만 붙으면 메인 운용 후보로 보기 좋습니다.")
+    elif scores["buyable_score"] >= threshold and trade_type == "중기":
+        tone.append("중기 메인 기준선은 넘긴 상태라, 120일선 이탈만 명확히 두고 보는 운용이 어울립니다.")
+    elif scores["buyable_score"] >= threshold and trade_type == "장기":
+        tone.append("장기 전환형 기준선은 넘겼지만, 240/480 반응을 더 느리게 보는 쪽이 맞겠습니다.")
+    elif scores["buyable_score"] >= threshold and trade_type == "단기":
+        tone.append("단기 급등 대응 기준선은 넘겼지만, 5/20/60 분할 매도를 전제로만 보는 쪽이 안전합니다.")
+    elif scores["extension_risk_score"] >= 70:
         tone.append("이미 많이 터진 자리라 추격 부담이 크고, 메인 매수 시스템보다는 단기 대응 영역에 가깝습니다.")
     elif scores["extension_risk_score"] >= 45:
         tone.append("강한 종목일 수는 있지만 이격이 벌어져 있어 편하게 버티는 자리는 아닐 가능성이 큽니다.")
     elif scores["fear_score"] >= 60:
         tone.append("공포형 눌림 성격이 강해 자리 자체는 볼 만하지만 손절 기준을 분명히 잡아야 합니다.")
-    elif scores["buyable_score"] >= 75 and scores["turning_score"] >= 60:
+    elif scores["buyable_score"] >= threshold + 10 and scores["turning_score"] >= 60:
         tone.append("정석 눌림 후보에 가깝고, 지지 유지가 확인되면 실전 매수까지 이어질 수 있는 구조입니다.")
-    elif scores["buyable_score"] >= 55:
+    elif scores["buyable_score"] >= threshold - 10:
         tone.append("사고 싶은 자리 후보로는 볼 수 있지만, 한 단계 더 눌리거나 지지 확인이 붙으면 더 편해질 수 있습니다.")
     else:
         tone.append("가능성은 있어도 지금 바로 누르기엔 근거가 조금 부족한 편입니다.")
@@ -860,6 +930,7 @@ def main() -> None:
     monthly = payload["monthly"]
     trade_profile = payload.get("trade_profile", {})
     support = build_support_context(asset_type, payload["ticker"], payload, str(end_date).strip() or None)
+    trade_plan = get_trade_plan(trade_profile)
 
     st.subheader(f"{payload['name']} ({payload['ticker']})")
     st.caption(f"기준일: {payload['date']}")
@@ -867,20 +938,16 @@ def main() -> None:
         st.caption(
             f"매매 타입: {trade_profile.get('trade_horizon', '-')} | {build_trade_horizon_comment(trade_profile)}"
         )
+    if trade_plan:
+        st.caption(
+            f"운용 우선순위: {trade_plan.get('priority', '-')} | 기준선 {trade_plan.get('entry_threshold', 0):.0f} | "
+            f"기본 매도 {trade_plan.get('exit_rule', '-')} | 보유 {trade_plan.get('holding_window', '-')}"
+        )
 
-    total_score = round(
-        clamp(
-            scores["buyable_score"] * 0.5
-            + scores["turning_score"] * 0.2
-            + (100 - scores["extension_risk_score"]) * 0.15
-            + (100 - scores["fear_score"]) * 0.05
-            + support["support_score"] * 0.1
-        ),
-        1,
-    )
+    total_score = compute_operating_score(scores, support, trade_plan)
 
     m0, m1, m2, m3, m4, m5, m6 = st.columns(7)
-    m0.metric("총점", f"{total_score:.1f}")
+    m0.metric("운용 점수", f"{total_score:.1f}")
     m1.metric("사고 싶은 자리", f"{scores['buyable_score']:.1f}")
     m2.metric("전환 가능성", f"{scores['turning_score']:.1f}")
     m3.metric("과열 부담", f"{scores['extension_risk_score']:.1f}")
@@ -953,7 +1020,7 @@ def main() -> None:
             """
         )
 
-    st.info(build_comment(scores, daily))
+    st.info(build_comment(scores, daily, trade_profile, trade_plan))
 
     st.markdown("#### 보조 지표 / 환경 점수")
     s1, s2, s3 = st.columns(3)
