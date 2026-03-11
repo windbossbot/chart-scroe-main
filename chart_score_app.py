@@ -122,6 +122,8 @@ def add_indicators(df: pd.DataFrame) -> pd.DataFrame:
     out["from_hh20"] = (out["close"] / out["hh20"] - 1) * 100
     out["hh252"] = out["high"].rolling(252).max()
     out["from_52h"] = (out["close"] / out["hh252"] - 1) * 100
+    out["ll252"] = out["low"].rolling(252).min()
+    out["from_52l"] = (out["close"] / out["ll252"] - 1) * 100
     box_high = out["high"].rolling(20).max().shift(1)
     box_low = out["low"].rolling(20).min().shift(1)
     out["box_range_pct"] = (box_high - box_low) / out["close"] * 100
@@ -137,26 +139,27 @@ def score_position(daily: pd.Series, weekly: pd.Series, monthly: pd.Series) -> d
 
     daily_buyable = 0.0
     if regime == "강세":
-        daily_buyable += 22 if -4.5 <= daily["dist20"] <= 1.5 else 0
-        daily_buyable += 20 if -2.5 <= daily["dist60"] <= 3.5 else 0
-        daily_buyable += 6 if -2.5 <= daily["dist120"] <= 5.5 else 0
-        daily_buyable += 10 if -9 <= daily["dist20"] <= -2 and daily["close"] > daily["ma60"] else 0
+        daily_buyable += 18 if -4.5 <= daily["dist20"] <= 1.5 and daily["ma20_slope5"] > 0 else 0
+        daily_buyable += 18 if -2.5 <= daily["dist60"] <= 3.5 and daily["ma60_slope5"] > 0 else 0
+        daily_buyable += 4 if -2.5 <= daily["dist120"] <= 5.5 and daily["ma120_slope5"] > 0 else 0
+        daily_buyable += 6 if -9 <= daily["dist20"] <= -2 and daily["close"] > daily["ma60"] else 0
     elif regime == "중간":
-        daily_buyable += 12 if -4.5 <= daily["dist20"] <= 1.5 else 0
-        daily_buyable += 22 if -2.5 <= daily["dist60"] <= 3.5 else 0
-        daily_buyable += 16 if -2.5 <= daily["dist120"] <= 5.5 else 0
-        daily_buyable += 10 if -8 <= daily["dist20"] <= -2 and daily["close"] > daily["ma60"] else 0
+        daily_buyable += 8 if -4.5 <= daily["dist20"] <= 1.5 and daily["ma20_slope5"] > 0 else 0
+        daily_buyable += 20 if -2.5 <= daily["dist60"] <= 3.5 and daily["ma60_slope5"] > 0 else 0
+        daily_buyable += 14 if -2.5 <= daily["dist120"] <= 5.5 and daily["ma120_slope5"] > 0 else 0
+        daily_buyable += 6 if -8 <= daily["dist20"] <= -2 and daily["close"] > daily["ma60"] else 0
     else:
-        daily_buyable += 6 if -2.5 <= daily["dist120"] <= 5.5 else 0
-        daily_buyable += 10 if -3 <= daily["dist240"] <= 6 else 0
-        daily_buyable += 16 if -3 <= daily["dist480"] <= 8 else 0
+        daily_buyable += 4 if -2.5 <= daily["dist120"] <= 5.5 and daily["ma120_slope5"] > -1 else 0
+        daily_buyable += 6 if -3 <= daily["dist240"] <= 6 and daily["ma240_slope5"] > -1 else 0
+        daily_buyable += 12 if -3 <= daily["dist480"] <= 8 and daily["ma480_slope5"] > -1 else 0
 
-    daily_buyable += 8 if 34 <= daily["rsi14"] <= 56 else 0
-    daily_buyable += 8 if daily["vr20"] <= 1.0 else 0
-    daily_buyable += 4 if 1.0 < daily["vr20"] <= 1.2 else 0
-    daily_buyable += 8 if 10 <= daily["box_range_pct"] <= 32 else 0
-    daily_buyable += 8 if -14 <= daily["from_hh20"] <= -4 else 0
+    daily_buyable += 4 if 34 <= daily["rsi14"] <= 56 else 0
+    daily_buyable += 6 if daily["vr20"] <= 1.0 else 0
+    daily_buyable += 3 if 1.0 < daily["vr20"] <= 1.2 else 0
+    daily_buyable += 4 if 10 <= daily["box_range_pct"] <= 32 else 0
+    daily_buyable += 4 if -14 <= daily["from_hh20"] <= -4 else 0
     daily_buyable += 4 if -12 <= daily["from_52h"] <= -2 else 0
+    daily_buyable -= 14 if 0 <= daily["from_52l"] <= 12 else 0
     daily_buyable -= 18 if daily["close"] < daily["ma60"] and daily["close"] < daily["ma120"] else 0
     daily_buyable -= 10 if daily["close"] < daily["ma20"] and daily["ma20_slope5"] < 0 else 0
     daily_buyable -= 18 if daily["dist20"] > 6 else 0
