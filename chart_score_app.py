@@ -893,9 +893,9 @@ def main() -> None:
 
     st.markdown("#### 보조 지표 / 환경 점수")
     s1, s2, s3 = st.columns(3)
-    s1.metric("시장/지수 보정", f"{support['market_score']:.1f} / 8")
-    s2.metric("펀더멘털 보정", f"{support['fundamental_score']:.1f} / 5")
-    s3.metric("배당/메이저 보정", f"{support['dividend_score']:.1f} / 2")
+    s1.metric("시장/지수 보정", f"{support['market_score']:.1f} / 6")
+    s2.metric("펀더멘털 보정", f"{support['fundamental_score']:.1f} / 3")
+    s3.metric("배당/메이저 보정", f"{support['dividend_score']:.1f} / 1")
 
     if support["details"]:
         st.caption(" | ".join(support["details"][:6]))
