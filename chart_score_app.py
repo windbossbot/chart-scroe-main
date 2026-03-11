@@ -280,6 +280,46 @@ def score_position(daily: pd.Series, weekly: pd.Series, monthly: pd.Series) -> d
     }
 
 
+def classify_trade_horizon(daily: pd.Series, weekly: pd.Series, monthly: pd.Series, scores: dict) -> dict:
+    trade_type = "중기"
+    reasons: list[str] = []
+
+    short_ready = (
+        monthly["close"] > monthly["ma5"]
+        and weekly["close"] > weekly["ma20"]
+        and weekly["close"] > weekly["ma60"]
+        and daily["ma20"] > daily["ma60"]
+        and daily["runup30"] > 8
+        and scores.get("breakout_setup_score", 0) >= 55
+    )
+    long_ready = (
+        scores.get("regime_label") == "약세"
+        or daily["close"] < daily["ma120"]
+        or (-3 <= daily["dist240"] <= 6)
+        or (-3 <= daily["dist480"] <= 8)
+    )
+
+    if short_ready:
+        trade_type = "단기"
+        reasons.append("급등/가속형")
+        reasons.append("20/60 중심 추세 대응")
+        reasons.append("5/20/60 분할 매도 우선")
+    elif long_ready:
+        trade_type = "장기"
+        reasons.append("전환/장기이평 반응형")
+        reasons.append("240/480 중심 해석")
+        reasons.append("120/240/480 이탈을 느리게 대응")
+    else:
+        reasons.append("일반 추세 눌림형")
+        reasons.append("60/120 중심 매수")
+        reasons.append("120일선 이탈 매도 우선")
+
+    return {
+        "trade_horizon": trade_type,
+        "trade_horizon_notes": reasons,
+    }
+
+
 def build_comment(scores: dict, daily: pd.Series) -> str:
     tone = []
 
@@ -318,6 +358,13 @@ def build_comment(scores: dict, daily: pd.Series) -> str:
         tone.append("240일선 근처라 장기선 반응을 같이 보는 쪽이 좋겠습니다.")
 
     return " ".join(tone[:3])
+
+
+def build_trade_horizon_comment(profile: dict) -> str:
+    notes = profile.get("trade_horizon_notes", [])
+    if not notes:
+        return ""
+    return " / ".join(notes[:3])
 
 
 def safe_float(value, default: float = 0.0) -> float:
@@ -656,6 +703,8 @@ def fetch_kr_payload(ticker: str, end_date: str | None) -> dict:
     daily = daily_df.iloc[-1]
     weekly = weekly_df.loc[:latest_dt].iloc[-1]
     monthly = monthly_df.loc[:latest_dt].iloc[-1]
+    scores = score_position(daily, weekly, monthly)
+    profile = classify_trade_horizon(daily, weekly, monthly, scores)
     return {
         "name": stock.get_market_ticker_name(ticker),
         "ticker": ticker,
@@ -663,7 +712,8 @@ def fetch_kr_payload(ticker: str, end_date: str | None) -> dict:
         "daily": daily,
         "weekly": weekly,
         "monthly": monthly,
-        "scores": score_position(daily, weekly, monthly),
+        "scores": scores,
+        "trade_profile": profile,
     }
 
 
@@ -689,6 +739,8 @@ def fetch_bithumb_payload(symbol: str) -> dict:
     daily = daily_df.iloc[-1]
     weekly = weekly_df.loc[:latest_dt].iloc[-1]
     monthly = monthly_df.loc[:latest_dt].iloc[-1]
+    scores = score_position(daily, weekly, monthly)
+    profile = classify_trade_horizon(daily, weekly, monthly, scores)
     return {
         "name": f"{ticker}/KRW",
         "ticker": ticker,
@@ -696,7 +748,8 @@ def fetch_bithumb_payload(symbol: str) -> dict:
         "daily": daily,
         "weekly": weekly,
         "monthly": monthly,
-        "scores": score_position(daily, weekly, monthly),
+        "scores": scores,
+        "trade_profile": profile,
     }
 
 
@@ -741,6 +794,8 @@ def fetch_us_payload(symbol: str, end_date: str | None) -> dict:
     except Exception:
         name = ticker
 
+    scores = score_position(daily, weekly, monthly)
+    profile = classify_trade_horizon(daily, weekly, monthly, scores)
     return {
         "name": name,
         "ticker": ticker,
@@ -748,7 +803,8 @@ def fetch_us_payload(symbol: str, end_date: str | None) -> dict:
         "daily": daily,
         "weekly": weekly,
         "monthly": monthly,
-        "scores": score_position(daily, weekly, monthly),
+        "scores": scores,
+        "trade_profile": profile,
     }
 
 
@@ -802,10 +858,15 @@ def main() -> None:
     daily = payload["daily"]
     weekly = payload["weekly"]
     monthly = payload["monthly"]
+    trade_profile = payload.get("trade_profile", {})
     support = build_support_context(asset_type, payload["ticker"], payload, str(end_date).strip() or None)
 
     st.subheader(f"{payload['name']} ({payload['ticker']})")
     st.caption(f"기준일: {payload['date']}")
+    if trade_profile:
+        st.caption(
+            f"매매 타입: {trade_profile.get('trade_horizon', '-')} | {build_trade_horizon_comment(trade_profile)}"
+        )
 
     total_score = round(
         clamp(
