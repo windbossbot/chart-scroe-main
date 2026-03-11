@@ -11,7 +11,7 @@ from pykrx import stock
 
 CACHE_DIR = Path(__file__).resolve().parent / "_cache"
 CASE_SCORES_PATH = CACHE_DIR / "chart_case_scores.json"
-SUPPORT_SCORE_MAX = 15.0
+SUPPORT_SCORE_MAX = 10.0
 
 
 def clamp(value: float, low: float = 0.0, high: float = 100.0) -> float:
@@ -93,7 +93,7 @@ def resample_ohlcv(df: pd.DataFrame, rule: str) -> pd.DataFrame:
 
 def add_indicators(df: pd.DataFrame) -> pd.DataFrame:
     out = df.copy()
-    for n in [5, 20, 60, 120, 240]:
+    for n in [5, 20, 60, 120, 240, 480]:
         out[f"ma{n}"] = out["close"].rolling(n).mean()
         out[f"dist{n}"] = (out["close"] / out[f"ma{n}"] - 1) * 100
         out[f"ma{n}_slope5"] = out[f"ma{n}"].diff(5)
@@ -120,6 +120,8 @@ def add_indicators(df: pd.DataFrame) -> pd.DataFrame:
     out["runup30"] = (out["close"] / out["close"].shift(30) - 1) * 100
     out["hh20"] = out["high"].rolling(20).max().shift(1)
     out["from_hh20"] = (out["close"] / out["hh20"] - 1) * 100
+    out["hh252"] = out["high"].rolling(252).max()
+    out["from_52h"] = (out["close"] / out["hh252"] - 1) * 100
     box_high = out["high"].rolling(20).max().shift(1)
     box_low = out["low"].rolling(20).min().shift(1)
     out["box_range_pct"] = (box_high - box_low) / out["close"] * 100
@@ -128,23 +130,37 @@ def add_indicators(df: pd.DataFrame) -> pd.DataFrame:
 
 def score_position(daily: pd.Series, weekly: pd.Series, monthly: pd.Series) -> dict:
     daily_buyable = 0.0
-    daily_buyable += 25 if daily["close"] > daily["ma60"] else 0
-    daily_buyable += 20 if -8 <= daily["dist20"] <= -2 else 0
-    daily_buyable += 12 if 0 <= daily["dist60"] <= 6 else 0
-    daily_buyable += 10 if 35 <= daily["rsi14"] <= 52 else 0
-    daily_buyable += 8 if daily["vr20"] <= 1.3 else 0
-    daily_buyable += 8 if 8 <= daily["box_range_pct"] <= 35 else 0
-    daily_buyable -= 20 if daily["close"] < daily["ma60"] else 0
-    daily_buyable -= 12 if daily["dist120"] > 20 else 0
-    daily_buyable -= 10 if daily["runup30"] < 0 else 0
+    daily_buyable += 18 if -4.5 <= daily["dist20"] <= 1.5 else 0
+    daily_buyable += 22 if -2.5 <= daily["dist60"] <= 3.5 else 0
+    daily_buyable += 10 if -2.5 <= daily["dist120"] <= 5.5 else 0
+    daily_buyable += 6 if -3 <= daily["dist240"] <= 6 else 0
+    daily_buyable += 10 if -3 <= daily["dist480"] <= 8 else 0
+    daily_buyable += 12 if -9 <= daily["dist20"] <= -2 and daily["close"] > daily["ma60"] else 0
+    daily_buyable += 8 if 34 <= daily["rsi14"] <= 56 else 0
+    daily_buyable += 8 if daily["vr20"] <= 1.0 else 0
+    daily_buyable += 4 if 1.0 < daily["vr20"] <= 1.2 else 0
+    daily_buyable += 8 if 10 <= daily["box_range_pct"] <= 32 else 0
+    daily_buyable += 8 if -14 <= daily["from_hh20"] <= -4 else 0
+    daily_buyable += 4 if -12 <= daily["from_52h"] <= -2 else 0
+    daily_buyable -= 18 if daily["close"] < daily["ma60"] and daily["close"] < daily["ma120"] else 0
+    daily_buyable -= 10 if daily["close"] < daily["ma20"] and daily["ma20_slope5"] < 0 else 0
+    daily_buyable -= 18 if daily["dist20"] > 6 else 0
+    daily_buyable -= 12 if daily["ret14"] > 18 else 0
+    daily_buyable -= 12 if daily["dist240"] < -8 else 0
+    daily_buyable -= 20 if daily["dist480"] < -6 else 0
+    daily_buyable -= 6 if daily["close"] < daily["ma20"] and 0 <= daily["dist120"] <= 8 else 0
+    daily_buyable -= 6 if daily["close"] < daily["ma20"] and 0 <= daily["dist240"] <= 10 else 0
 
     weekly_buyable = 0.0
-    weekly_buyable += 10 if weekly["close"] > weekly["ma20"] else 0
-    weekly_buyable += 5 if weekly["ma20_slope5"] > 0 else 0
+    weekly_buyable += 6 if weekly["close"] > weekly["ma60"] else 0
+    weekly_buyable += 4 if weekly["close"] > weekly["ma20"] else 0
+    weekly_buyable += 3 if weekly["ma20_slope5"] > 0 else 0
 
     monthly_buyable = 0.0
-    monthly_buyable += 7 if monthly["close"] > monthly["ma20"] else 0
+    monthly_buyable += 8 if monthly["close"] > monthly["ma5"] else 0
+    monthly_buyable += 3 if monthly["close"] > monthly["ma20"] else 0
     monthly_buyable += 3 if monthly["ma20_slope5"] > 0 else 0
+    monthly_buyable -= 16 if monthly["close"] < monthly["ma5"] and monthly["ma5_slope5"] < 0 else 0
 
     buyable = daily_buyable + weekly_buyable + monthly_buyable
 
@@ -162,8 +178,10 @@ def score_position(daily: pd.Series, weekly: pd.Series, monthly: pd.Series) -> d
     weekly_turning += 5 if weekly["ma20_slope5"] > 0 else 0
 
     monthly_turning = 0.0
-    monthly_turning += 7 if monthly["close"] > monthly["ma20"] else 0
+    monthly_turning += 8 if monthly["close"] > monthly["ma5"] else 0
+    monthly_turning += 5 if monthly["close"] > monthly["ma20"] else 0
     monthly_turning += 3 if monthly["ma20_slope5"] > 0 else 0
+    monthly_turning -= 10 if monthly["close"] < monthly["ma5"] and monthly["ma5_slope5"] < 0 else 0
 
     turning = daily_turning + weekly_turning + monthly_turning
 
@@ -441,6 +459,7 @@ def build_support_context(asset_type: str, ticker: str, payload: dict, end_date:
         if not ref_df.empty:
             row = ref_df.iloc[-1]
             market_score, notes = score_reference_strength(row)
+            market_score = min(market_score, 6.0)
             benchmark_rows.append(
                 {
                     "항목": segment,
@@ -461,16 +480,16 @@ def build_support_context(asset_type: str, ticker: str, payload: dict, end_date:
         div = safe_float(fundamentals.get("DIV"))
 
         if 0 < per <= 25:
-            fundamental_score += 2.0
+            fundamental_score += 1.0
             details.append("펀더멘털: PER 과열 아님")
         if 0 < pbr <= 3.5:
-            fundamental_score += 1.5
+            fundamental_score += 0.7
             details.append("펀더멘털: PBR 부담 낮음")
         if eps > 0:
-            fundamental_score += 1.5
+            fundamental_score += 0.8
             details.append("펀더멘털: EPS 양수")
         if div >= 1.0:
-            dividend_score += 2.0
+            dividend_score += 1.0
             details.append("배당: DIV 1% 이상")
 
         fundamental_rows = [
@@ -511,16 +530,16 @@ def build_support_context(asset_type: str, ticker: str, payload: dict, end_date:
         roe = safe_float(info.get("returnOnEquity")) * 100
 
         if 0 < trailing_pe <= 35 or 0 < forward_pe <= 30:
-            fundamental_score += 2.0
+            fundamental_score += 1.0
             details.append("펀더멘털: PER 과열 아님")
         if eps > 0:
-            fundamental_score += 1.5
+            fundamental_score += 0.8
             details.append("펀더멘털: EPS 양수")
         if roe >= 8:
-            fundamental_score += 1.5
+            fundamental_score += 0.8
             details.append("펀더멘털: ROE 양호")
         if div_yield >= 1.0:
-            dividend_score += 2.0
+            dividend_score += 1.0
             details.append("배당: dividend yield 1% 이상")
 
         fundamental_rows = [
@@ -550,13 +569,11 @@ def build_support_context(asset_type: str, ticker: str, payload: dict, end_date:
                 }
             )
             details.extend([f"코인 환경: {label} {note}" for note in notes[:2]])
-        market_score = min(market_score, 12.0)
-        symbol = str(payload.get("ticker", "")).upper()
-        if symbol in {"BTC", "ETH"}:
-            fundamental_score += 2.0
-            details.append("코인 특성: 메이저 자산")
+        market_score = min(market_score, 8.0)
+        details.append("코인: 펀더멘털 이력 백테스트가 어려워 점수 반영 제외")
         fundamental_rows = [
             {"항목": "환경 해석", "값": "BTC/ETH 강도 기반 약한 보정"},
+            {"항목": "펀더멘털 처리", "값": "코인은 점수 제외"},
         ]
 
     total = clamp(market_score + fundamental_score + dividend_score, 0.0, SUPPORT_SCORE_MAX)
