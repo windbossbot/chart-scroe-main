@@ -115,8 +115,10 @@ def add_indicators(df: pd.DataFrame) -> pd.DataFrame:
     ).max(axis=1)
     out["atr14"] = tr.rolling(14).mean()
     out["atr_pct"] = out["atr14"] / out["close"] * 100
+    out["atr_pct_ref60"] = out["atr_pct"].rolling(60).median()
     out["vr20"] = out["volume"] / out["volume"].rolling(20).mean()
     out["ret14"] = (out["close"] / out["close"].shift(14) - 1) * 100
+    out["ret120"] = (out["close"] / out["close"].shift(120) - 1) * 100
     out["runup30"] = (out["close"] / out["close"].shift(30) - 1) * 100
     out["hh20"] = out["high"].rolling(20).max().shift(1)
     out["from_hh20"] = (out["close"] / out["hh20"] - 1) * 100
@@ -127,6 +129,10 @@ def add_indicators(df: pd.DataFrame) -> pd.DataFrame:
     box_high = out["high"].rolling(20).max().shift(1)
     box_low = out["low"].rolling(20).min().shift(1)
     out["box_range_pct"] = (box_high - box_low) / out["close"] * 100
+    bb_mid = out["close"].rolling(20).mean()
+    bb_std = out["close"].rolling(20).std()
+    out["bb_width_pct"] = ((bb_mid + 2 * bb_std) - (bb_mid - 2 * bb_std)) / out["close"] * 100
+    out["bb_width_ref60"] = out["bb_width_pct"].rolling(60).median()
     return out
 
 
@@ -320,6 +326,42 @@ def classify_trade_horizon(daily: pd.Series, weekly: pd.Series, monthly: pd.Seri
     }
 
 
+def evaluate_operating_filters(daily: pd.Series, weekly: pd.Series, monthly: pd.Series, scores: dict, profile: dict) -> dict:
+    trade_type = profile.get("trade_horizon", "중기")
+    rs_positive = bool(daily.get("ret120", 0) > 0)
+    atr_compression = bool(
+        pd.notna(daily.get("atr_pct_ref60")) and daily.get("atr_pct", 999) <= daily.get("atr_pct_ref60", 0) * 1.15
+    )
+    bb_compression = bool(
+        pd.notna(daily.get("bb_width_ref60")) and daily.get("bb_width_pct", 999) <= daily.get("bb_width_ref60", 0)
+    )
+    trend_start = bool(
+        daily["ma20"] > daily["ma60"] > daily["ma120"] and -8 <= daily["from_52h"] <= -2
+    )
+    above_long_ma = bool(daily["close"] > daily["ma240"])
+    slope_ok = bool(daily["ma60_slope5"] > 0 or daily["ma120_slope5"] > 0)
+    vol_keep = bool(daily["vr20"] >= 0.7)
+
+    preferred_setup = False
+    if trade_type == "중기":
+        preferred_setup = bool(scores.get("buyable_score", 0) >= 65 and atr_compression and bb_compression)
+    elif trade_type == "단기":
+        preferred_setup = bool(scores.get("buyable_score", 0) >= 75 and trend_start)
+    else:
+        preferred_setup = bool(scores.get("buyable_score", 0) >= 55 and above_long_ma and slope_ok)
+
+    return {
+        "rs_positive": rs_positive,
+        "atr_compression": atr_compression,
+        "bb_compression": bb_compression,
+        "trend_start": trend_start,
+        "above_long_ma": above_long_ma,
+        "slope_ok": slope_ok,
+        "volume_keep": vol_keep,
+        "preferred_setup": preferred_setup,
+    }
+
+
 def get_trade_plan(profile: dict) -> dict:
     trade_type = profile.get("trade_horizon", "중기")
     if trade_type == "단기":
@@ -329,6 +371,7 @@ def get_trade_plan(profile: dict) -> dict:
             "priority": "참고",
             "holding_window": "5~30 거래일",
             "exit_rule": "5일선 1차, 20일선 2차, 60일선 정리",
+            "preferred_rule": "20>60>120 + 추세 시작 확인",
         }
     if trade_type == "장기":
         return {
@@ -337,6 +380,7 @@ def get_trade_plan(profile: dict) -> dict:
             "priority": "참고",
             "holding_window": "60~240 거래일",
             "exit_rule": "240/480 이탈 중심",
+            "preferred_rule": "240/480 근처 + 장기선 구조 확인",
         }
     return {
         "trade_horizon": trade_type,
@@ -344,10 +388,11 @@ def get_trade_plan(profile: dict) -> dict:
         "priority": "메인",
         "holding_window": "40~120 거래일",
         "exit_rule": "120일선 이탈",
+        "preferred_rule": "ATR + 밴드 압축 동시 확인",
     }
 
 
-def compute_operating_score(scores: dict, support: dict, plan: dict) -> float:
+def compute_operating_score(scores: dict, support: dict, plan: dict, filters: dict | None = None) -> float:
     trade_type = plan.get("trade_horizon", "중기")
     if trade_type == "단기":
         value = (
@@ -374,6 +419,19 @@ def compute_operating_score(scores: dict, support: dict, plan: dict) -> float:
             + (100 - scores["fear_score"]) * 0.08
             + support["support_score"] * 0.06
         )
+
+    filters = filters or {}
+    if trade_type == "중기":
+        value += 4 if filters.get("atr_compression") else 0
+        value += 4 if filters.get("bb_compression") else 0
+        value += 2 if filters.get("trend_start") else 0
+        value += 1 if filters.get("rs_positive") else 0
+    elif trade_type == "단기":
+        value += 4 if filters.get("trend_start") else 0
+        value += 2 if filters.get("volume_keep") else 0
+    else:
+        value += 3 if filters.get("above_long_ma") else 0
+        value += 2 if filters.get("slope_ok") else 0
 
     threshold_gap = scores["buyable_score"] - plan.get("entry_threshold", 65.0)
     value += clamp(threshold_gap * 0.8, -10, 10)
@@ -931,6 +989,7 @@ def main() -> None:
     trade_profile = payload.get("trade_profile", {})
     support = build_support_context(asset_type, payload["ticker"], payload, str(end_date).strip() or None)
     trade_plan = get_trade_plan(trade_profile)
+    operating_filters = evaluate_operating_filters(daily, weekly, monthly, scores, trade_profile)
 
     st.subheader(f"{payload['name']} ({payload['ticker']})")
     st.caption(f"기준일: {payload['date']}")
@@ -941,10 +1000,11 @@ def main() -> None:
     if trade_plan:
         st.caption(
             f"운용 우선순위: {trade_plan.get('priority', '-')} | 기준선 {trade_plan.get('entry_threshold', 0):.0f} | "
-            f"기본 매도 {trade_plan.get('exit_rule', '-')} | 보유 {trade_plan.get('holding_window', '-')}"
+            f"기본 매도 {trade_plan.get('exit_rule', '-')} | 보유 {trade_plan.get('holding_window', '-')} | "
+            f"강화 조건 {trade_plan.get('preferred_rule', '-')}"
         )
 
-    total_score = compute_operating_score(scores, support, trade_plan)
+    total_score = compute_operating_score(scores, support, trade_plan, operating_filters)
 
     m0, m1, m2, m3, m4, m5, m6 = st.columns(7)
     m0.metric("실전 운용 점수", f"{total_score:.1f}")
@@ -964,6 +1024,19 @@ def main() -> None:
         "환경 보정 점수: 시장/펀더/배당 같은 약한 보조 | "
         "급등 준비 점수: 급등 전조 흔적"
     )
+    filter_notes = []
+    if operating_filters.get("preferred_setup"):
+        filter_notes.append("강화 조건 충족")
+    if operating_filters.get("atr_compression"):
+        filter_notes.append("ATR 압축")
+    if operating_filters.get("bb_compression"):
+        filter_notes.append("밴드 압축")
+    if operating_filters.get("trend_start"):
+        filter_notes.append("추세 시작 구조")
+    if operating_filters.get("rs_positive"):
+        filter_notes.append("장기 상승률 양수")
+    if filter_notes:
+        st.caption("운용 필터: " + " | ".join(filter_notes))
 
     with st.expander("점수 분해"):
         st.caption(f"현재 상태 분류: {scores.get('regime_label', '-')}")
