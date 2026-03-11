@@ -947,13 +947,23 @@ def main() -> None:
     total_score = compute_operating_score(scores, support, trade_plan)
 
     m0, m1, m2, m3, m4, m5, m6 = st.columns(7)
-    m0.metric("운용 점수", f"{total_score:.1f}")
-    m1.metric("사고 싶은 자리", f"{scores['buyable_score']:.1f}")
-    m2.metric("전환 가능성", f"{scores['turning_score']:.1f}")
-    m3.metric("과열 부담", f"{scores['extension_risk_score']:.1f}")
-    m4.metric("공포 강도", f"{scores['fear_score']:.1f}")
-    m5.metric("보조 보정", f"{support['support_score']:.1f}", f"합산 {support['adjusted_buyable_score']:.1f}")
-    m6.metric("급등 전조", f"{scores['breakout_setup_score']:.1f}")
+    m0.metric("실전 운용 점수", f"{total_score:.1f}")
+    m1.metric("매수 자리 점수", f"{scores['buyable_score']:.1f}")
+    m2.metric("추세 전환 점수", f"{scores['turning_score']:.1f}")
+    m3.metric("추격 위험 점수", f"{scores['extension_risk_score']:.1f}")
+    m4.metric("눌림/공포 점수", f"{scores['fear_score']:.1f}")
+    m5.metric("환경 보정 점수", f"{support['support_score']:.1f}", f"합산 {support['adjusted_buyable_score']:.1f}")
+    m6.metric("급등 준비 점수", f"{scores['breakout_setup_score']:.1f}")
+
+    st.caption(
+        "실전 운용 점수: 현재 타입 기준으로 실제 운용에 가까운 종합 점수 | "
+        "매수 자리 점수: 지금 자리가 사고 싶은 자리인지 | "
+        "추세 전환 점수: 하락/횡보에서 상방 전환 가능성 | "
+        "추격 위험 점수: 이미 많이 오른 자리인지 | "
+        "눌림/공포 점수: 무섭지만 눌림 매매 근거가 있는지 | "
+        "환경 보정 점수: 시장/펀더/배당 같은 약한 보조 | "
+        "급등 준비 점수: 급등 전조 흔적"
+    )
 
     with st.expander("점수 분해"):
         st.caption(f"현재 상태 분류: {scores.get('regime_label', '-')}")
