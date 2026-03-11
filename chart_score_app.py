@@ -182,11 +182,58 @@ def score_position(daily: pd.Series, weekly: pd.Series, monthly: pd.Series) -> d
     fear += 10 if daily["from_hh20"] <= -10 else 0
     fear += 10 if daily["ret14"] <= -8 else 0
 
+    breakout_setup = 0.0
+    breakout_notes: list[str] = []
+    if daily["runup30"] > 0:
+        breakout_setup += 12
+        breakout_notes.append("최근 30일 상승 추세 유지")
+    if 0 <= daily["dist120"] <= 8:
+        breakout_setup += 20
+        breakout_notes.append("120일선 근처 지지")
+    elif 0 <= daily["dist240"] <= 10:
+        breakout_setup += 16
+        breakout_notes.append("240일선 근처 지지")
+    if -10 <= daily["dist60"] <= 10:
+        breakout_setup += 14
+        breakout_notes.append("60일선 근처 매매 근거")
+    if -18 <= daily["from_hh20"] <= -6:
+        breakout_setup += 16
+        breakout_notes.append("고점 대비 눌림 후 재시도")
+    if 45 <= daily["rsi14"] <= 60:
+        breakout_setup += 10
+        breakout_notes.append("RSI 재가속 가능 구간")
+    if 0.6 <= daily["vr20"] <= 1.6:
+        breakout_setup += 10
+        breakout_notes.append("거래량 과열 전 정리")
+    if 8 <= daily["box_range_pct"] <= 32:
+        breakout_setup += 8
+        breakout_notes.append("박스 압축 범위 유지")
+    if weekly["ma20_slope5"] > 0:
+        breakout_setup += 6
+        breakout_notes.append("주봉 기울기 양호")
+    if monthly["ma20_slope5"] > 0:
+        breakout_setup += 4
+        breakout_notes.append("월봉 기울기 양호")
+    if daily["close"] < daily["ma60"]:
+        breakout_setup -= 12
+        breakout_notes.append("60일선 하회")
+    if daily["ret14"] < -15:
+        breakout_setup -= 10
+        breakout_notes.append("최근 낙폭 과다")
+    if daily["vr20"] > 2.5 and daily["from_hh20"] > 0:
+        breakout_setup -= 12
+        breakout_notes.append("이미 거래량 터진 돌파")
+    if daily["dist20"] > 12:
+        breakout_setup -= 10
+        breakout_notes.append("20일선 과열 이격")
+
     return {
         "buyable_score": round(clamp(buyable), 1),
         "turning_score": round(clamp(turning), 1),
         "extension_risk_score": round(clamp(extension), 1),
         "fear_score": round(clamp(fear), 1),
+        "breakout_setup_score": round(clamp(breakout_setup), 1),
+        "breakout_setup_notes": breakout_notes,
         "daily_core_buyable": round(clamp(daily_buyable), 1),
         "weekly_bonus_buyable": round(clamp(weekly_buyable), 1),
         "monthly_bonus_buyable": round(clamp(monthly_buyable), 1),
@@ -197,15 +244,43 @@ def score_position(daily: pd.Series, weekly: pd.Series, monthly: pd.Series) -> d
 
 
 def build_comment(scores: dict, daily: pd.Series) -> str:
-    if daily["close"] < daily["ma60"]:
-        return "하락/조정 지속 쪽에 가깝습니다. 60일선 재회복 전에는 보수적으로 보는 편이 낫습니다."
-    if scores["extension_risk_score"] >= 55:
-        return "과열 확장 구간 쪽입니다. 강한 종목일 수는 있지만 정석 눌림 매수와는 거리가 있습니다."
-    if scores["buyable_score"] >= 70 and scores["turning_score"] >= 60:
-        return "정석 눌림 후보에 가깝습니다. 다만 실제 진입은 지지 유지 여부를 확인하는 쪽이 안전합니다."
-    if scores["fear_score"] >= 60:
-        return "공포형 눌림 후보입니다. 구조는 맞아도 심리적으로 어려울 수 있어 손절 기준이 중요합니다."
-    return "구조는 일부 맞지만 애매한 자리입니다. 더 눌리거나 다시 정리되는지 확인하는 편이 낫습니다."
+    tone = []
+
+    if daily["close"] >= daily["ma20"] and daily["close"] >= daily["ma60"]:
+        tone.append("단기와 중기 이평이 아래에서 받쳐주는 구조라 매매 근거는 비교적 선명합니다.")
+    elif daily["close"] >= daily["ma20"] and daily["close"] < daily["ma60"]:
+        tone.append("20일선은 회복했지만 60일선이 위에 있어, 반등보다는 아직 저항 확인 구간에 가깝습니다.")
+    elif daily["close"] < daily["ma20"] and daily["close"] >= daily["ma60"]:
+        tone.append("60일선은 지키고 있지만 20일선 아래라, 눌림으로 볼지 약세 전환으로 볼지 애매한 자리입니다.")
+    else:
+        tone.append("20일선과 60일선이 모두 위에 있어 이평이 지지보다 저항처럼 느껴질 수 있습니다.")
+
+    if scores["extension_risk_score"] >= 70:
+        tone.append("이미 많이 터진 자리라 추격 부담이 크고, 메인 매수 시스템보다는 단기 대응 영역에 가깝습니다.")
+    elif scores["extension_risk_score"] >= 45:
+        tone.append("강한 종목일 수는 있지만 이격이 벌어져 있어 편하게 버티는 자리는 아닐 가능성이 큽니다.")
+    elif scores["fear_score"] >= 60:
+        tone.append("공포형 눌림 성격이 강해 자리 자체는 볼 만하지만 손절 기준을 분명히 잡아야 합니다.")
+    elif scores["buyable_score"] >= 75 and scores["turning_score"] >= 60:
+        tone.append("정석 눌림 후보에 가깝고, 지지 유지가 확인되면 실전 매수까지 이어질 수 있는 구조입니다.")
+    elif scores["buyable_score"] >= 55:
+        tone.append("사고 싶은 자리 후보로는 볼 수 있지만, 한 단계 더 눌리거나 지지 확인이 붙으면 더 편해질 수 있습니다.")
+    else:
+        tone.append("가능성은 있어도 지금 바로 누르기엔 근거가 조금 부족한 편입니다.")
+
+    if scores.get("breakout_setup_score", 0) >= 75:
+        tone.append("최근 패턴은 공포 뒤 급등 전조 후보에 가까워, 눌림 후 재가속을 노리는 관점에선 의미가 있습니다.")
+    elif scores.get("breakout_setup_score", 0) >= 55:
+        tone.append("급등 전조 흔적은 일부 보이지만, 아직은 확률 높은 자리로 단정하기엔 확인이 더 필요합니다.")
+
+    if daily["dist120"] > 0 and daily["dist120"] <= 6:
+        tone.append("120일선 근처라 중기 추세 확인선이 가까운 점은 심리적으로 도움이 됩니다.")
+    elif daily["dist120"] < 0 and abs(daily["dist120"]) <= 6:
+        tone.append("120일선 아래에서 움직여 중기선이 머리 위 저항처럼 느껴질 수 있습니다.")
+    elif daily["dist240"] > 0 and daily["dist240"] <= 10:
+        tone.append("240일선 근처라 장기선 반응을 같이 보는 쪽이 좋겠습니다.")
+
+    return " ".join(tone[:3])
 
 
 def safe_float(value, default: float = 0.0) -> float:
@@ -707,16 +782,17 @@ def main() -> None:
         1,
     )
 
-    m0, m1, m2, m3, m4, m5 = st.columns(6)
+    m0, m1, m2, m3, m4, m5, m6 = st.columns(7)
     m0.metric("총점", f"{total_score:.1f}")
     m1.metric("사고 싶은 자리", f"{scores['buyable_score']:.1f}")
     m2.metric("전환 가능성", f"{scores['turning_score']:.1f}")
     m3.metric("과열 부담", f"{scores['extension_risk_score']:.1f}")
     m4.metric("공포 강도", f"{scores['fear_score']:.1f}")
     m5.metric("보조 보정", f"{support['support_score']:.1f}", f"합산 {support['adjusted_buyable_score']:.1f}")
+    m6.metric("급등 전조", f"{scores['breakout_setup_score']:.1f}")
 
     with st.expander("점수 분해"):
-        d1, d2 = st.columns(2)
+        d1, d2, d3 = st.columns(3)
         with d1:
             st.markdown(
                 f"""
@@ -733,6 +809,16 @@ def main() -> None:
                 - 일봉 코어: `{scores['daily_core_turning']:.1f}`
                 - 주봉 보정: `{scores['weekly_bonus_turning']:.1f}`
                 - 월봉 보정: `{scores['monthly_bonus_turning']:.1f}`
+                """
+            )
+        with d3:
+            notes = scores.get("breakout_setup_notes", [])
+            bullet_text = "\n".join([f"- {note}" for note in notes[:8]]) if notes else "- 아직 뚜렷한 전조가 없습니다."
+            st.markdown(
+                f"""
+                **급등 전조 분해**
+                - 점수: `{scores['breakout_setup_score']:.1f}`
+                {bullet_text}
                 """
             )
 
